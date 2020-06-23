@@ -33,13 +33,20 @@ public class Product extends BaseModel {
         this.defaultCurrency = defaultCurrency;
     }
 
-    public String getPrice() {
-        return String.valueOf(this.defaultPrice) + " " + this.defaultCurrency.toString();
+    public float getPrice() {
+        return defaultPrice;
     }
 
     public void setPrice(float price, String currency) {
         this.defaultPrice = price;
         this.defaultCurrency = Currency.getInstance(currency);
+    }
+
+    public Product getProductByID(int id){
+        if (this.id == id){
+            return this;
+        }
+        return null;
     }
 
     public ProductCategory getProductCategory() {

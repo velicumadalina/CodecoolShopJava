@@ -32,6 +32,10 @@
 
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
+    <div class="card-text">
+        <a class="btn btn-success fa fa-shopping-cart" href="/cart">See Cart</a>
+    </div>
+
 </div>
 
 <div class="container">
@@ -52,7 +56,10 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                        <form action="/cart" method="post">
+                        <input type="hidden" name="add_product" th:value="${prod.id}">
+                        <a class="btn btn-success" href="/cart"><button type="submit"> Add to cart</button></a>
+                        </form>
                     </div>
                 </div>
             </div>
