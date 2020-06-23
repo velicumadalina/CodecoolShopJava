@@ -21,8 +21,9 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "CartController", urlPatterns = {"/cart"}, loadOnStartup = 1)
 public class CartController extends HttpServlet {
-    Cart myCart = new Cart();
-    int total = 0;
+    private Cart myCart = new Cart();
+    private float total = 0;
+
 
 
     @Override
