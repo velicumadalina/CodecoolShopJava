@@ -23,6 +23,15 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
         }
         return instance;
     }
+    public ProductCategory getByName(String name){
+        for (ProductCategory cat: data) {
+            if(cat.getName().equals(name)){
+                return cat;
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public void add(ProductCategory category) {

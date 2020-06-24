@@ -29,6 +29,7 @@ public class ProductCategory extends BaseModel {
         return this.products;
     }
 
+
     public void addProduct(Product product) {
         this.products.add(product);
     }

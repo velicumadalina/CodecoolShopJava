@@ -40,17 +40,27 @@
 
 <div class="container">
     <div class="card">
+        <form action="/" method="POST">
         <label>
-            <select>
+            <select name="sort_category">
+                <option value="choose_category">Choose category</option>
                 <option th:each="cat,iterStat : ${category}" th:text="${cat.name}">cat</option>
             </select>
         </label>
+            <label>
+                <select name="sort_supplier">
+                    <option value="choose_supplier">Choose supplier</option>
+                    <option th:each="supp,iterStat : ${suppliers}" th:text="${supp.name}">cat</option>
+                </select>
+            </label>
+            <button type="submit">Filter</button>
+        </form>
     </div>
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
+                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
                     <h4 class="card-title" th:text="${prod.name}">Product name</h4>
                     <p class="card-text" th:text="${prod.description}">Product description... </p>

@@ -27,6 +27,12 @@ public class ProductDaoMem implements ProductDao {
         return instance;
     }
 
+    public List<Product> filterBy(String category, String supplier){
+        return data.stream().filter(t -> t.getSupplier().getName().equals(supplier))
+                .filter(t -> t.getProductCategory().getName().equals(category))
+                .collect(Collectors.toList());
+    }
+
     @Override
     public void add(Product product) {
         product.setId(data.size() + 1);

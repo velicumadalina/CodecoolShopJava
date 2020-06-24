@@ -28,6 +28,10 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(amazon);
         Supplier lenovo = new Supplier("Lenovo", "Computers");
         supplierDataStore.add(lenovo);
+        Supplier apple = new Supplier("Apple", "Apple");
+        supplierDataStore.add(apple);
+        Supplier samsung = new Supplier("Samsung", "Samsung");
+        supplierDataStore.add(samsung);
 
         //setting up a new product category
         ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
@@ -40,10 +44,12 @@ public class Initializer implements ServletContextListener {
         //setting up products and printing it
         productDataStore.add(new Product("Amazon Fire", 49.9f, "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
         productDataStore.add(new Product("Lenovo IdeaPad Miix 700", 479, "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
-        productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
-        productDataStore.add(new Product("telefon1", 50, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", phone, amazon));
+        productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, apple));
+        productDataStore.add(new Product("telefon1", 50, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", phone, samsung));
         productDataStore.add(new Product("telefon2", 150, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", phone, lenovo));
+        productDataStore.add(new Product("telefon3", 350, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", phone, samsung));
         productDataStore.add(new Product("laptop1", 250, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", laptop, amazon));
         productDataStore.add(new Product("laptop2", 350, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", laptop, lenovo));
+        productDataStore.add(new Product("laptop3", 450, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", laptop, apple));
     }
 }
