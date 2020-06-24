@@ -42,21 +42,22 @@
     <!--<div class="container">-->
     <div class="card">
         <strong>Cart content</strong>
-        <h4 th:text="${cart.getCartContent().size()}"> cart</h4>
+        <h4 th:text="${totalItems}"> cart</h4>
     </div>
 
 
-    <div id="products" class="row" th:each="prod,iterStat : ${cart.getCartContent()}">
+    <div id="products" class="row" th:each="index : ${#numbers.sequence( 0, #arrays.length(cart)-1)}">
         <div class="card">
             <div class="card-body">
-                <h4 th:text="${prod.getName()}">Product name</h4>
-                <h4 th:text="${prod.getPrice()}">Product price</h4>
+                <h4 th:text="${cart[index].name}">Product name</h4>
+                <h4 th:text="${cart[index].price}">Product price</h4>
+                <h6 th:text="${quantities[index]}">Product price</h6>
             </div>
         </div>
     </div>
     <div>
         <p> Total</p>
-        <p th:text="${total}"> Total</p></div>
+        <p th:text="${totalPrice}"> Total</p></div>
 </div>
 
 <div th:replace="footer.html :: copy"></div>
