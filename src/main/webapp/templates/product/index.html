@@ -40,7 +40,11 @@
 
 <div class="container">
     <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
+        <label>
+            <select>
+                <option th:each="cat,iterStat : ${category}" th:text="${cat.name}">cat</option>
+            </select>
+        </label>
     </div>
 
     <div id="products" class="row">

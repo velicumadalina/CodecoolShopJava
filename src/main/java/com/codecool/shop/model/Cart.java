@@ -9,9 +9,7 @@ public class Cart {
         this.cartContent = new ArrayList<>();
     }
 
-    public void add(Product product) {
-        this.cartContent.add(product);
-    }
+    public void add(Product product) { this.cartContent.add(product); }
 
     public void remove(Product product) {
         this.cartContent.remove(product);

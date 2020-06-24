@@ -32,10 +32,18 @@ public class Initializer implements ServletContextListener {
         //setting up a new product category
         ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
         productCategoryDataStore.add(tablet);
+        ProductCategory phone = new ProductCategory("Phone", "Hardware", "A phone");
+        productCategoryDataStore.add(phone);
+        ProductCategory laptop = new ProductCategory("Laptop", "Hardware", "A laptop");
+        productCategoryDataStore.add(laptop);
 
         //setting up products and printing it
         productDataStore.add(new Product("Amazon Fire", 49.9f, "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
         productDataStore.add(new Product("Lenovo IdeaPad Miix 700", 479, "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
         productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
+        productDataStore.add(new Product("telefon1", 50, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", phone, amazon));
+        productDataStore.add(new Product("telefon2", 150, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", phone, lenovo));
+        productDataStore.add(new Product("laptop1", 250, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", laptop, amazon));
+        productDataStore.add(new Product("laptop2", 350, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", laptop, lenovo));
     }
 }
