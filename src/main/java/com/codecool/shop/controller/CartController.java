@@ -45,13 +45,13 @@ public class CartController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
-        List<Integer> productQuantities = new ArrayList<>();
-        for (Product obj : myCart.getCartContent()) {
-            productQuantities.add(getQuantity(obj.getName()));
-        }
-        productQuantities = productQuantities.stream().distinct().collect(Collectors.toList());
-        System.out.println(productQuantities.toString());
+//        for (Product obj : myCart.getCartContent()) {
+//            productQuantities.add(getQuantity(obj.getName()));
+//        }
+//        productQuantities = productQuantities.stream().distinct().collect(Collectors.toList());
+//        System.out.println(productQuantities.toString());
         List<Product> cart = myCart.getCartContent().stream().distinct().collect(Collectors.toList());
+        List<Integer> productQuantities = getFrequencies(cart, myCart.getCartContent());
         context.setVariable("cart", cart);
         context.setVariable("totalPrice", total);
         context.setVariable("quantities", productQuantities);
@@ -59,19 +59,27 @@ public class CartController extends HttpServlet {
         engine.process("product/cart.html", context, response.getWriter());
     }
 
-    public int getQuantity(String name) {
-        Product product = getProductByName(name);
-        return Collections.frequency(myCart.getCartContent(), product);
+    public List<Integer> getFrequencies(List<Product> distinct, List<Product> cartItems){
+        List<Integer> freqs = new ArrayList<>();
+        for(Product elem: distinct){
+            freqs.add(Collections.frequency(cartItems, elem));
+        }
+        return freqs;
     }
 
-    public Product getProductByName(String name){
-        for (Product prod : myCart.getCartContent()) {
-            if (prod.getName().equals(name)) {
-                return prod;
-            }
-        }
-        return null;
-    }
+//    public int getQuantity(String name) {
+//        Product product = getProductByName(name);
+//        return Collections.frequency(myCart.getCartContent(), product);
+//    }
+//
+//    public Product getProductByName(String name){
+//        for (Product prod : myCart.getCartContent()) {
+//            if (prod.getName().equals(name)) {
+//                return prod;
+//            }
+//        }
+//        return null;
+//    }
 
     public int totalItems(List<Integer> cart) {
         int total = 0;
@@ -80,4 +88,6 @@ public class CartController extends HttpServlet {
         }
         return total;
     }
+
+
 }
