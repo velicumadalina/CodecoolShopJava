@@ -40,7 +40,7 @@
         <strong>Cart content</strong>
         <h4 th:text="${totalItems}"> cart</h4>
     </div>
-    <button type="submit"><a href="/check-out">Check out</a></button>
+
 
 
     <div id="products" class="row" th:each="index : ${#numbers.sequence( 0, #arrays.length(cart)-1)}">
@@ -52,6 +52,10 @@
             </div>
         </div>
     </div>
+    <form action="/check-out" method="POST">
+        <input type="hidden" name="namesAndQuantities" th:value="${namesAndQuantities}">
+        <button type="submit">Check out</button>
+    </form>
     <div>
         <p> Total</p>
         <p th:text="${totalPrice}"> Total</p></div>
