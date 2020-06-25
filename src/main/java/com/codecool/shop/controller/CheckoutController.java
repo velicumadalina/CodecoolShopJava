@@ -19,7 +19,9 @@ public class CheckoutController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
         String namesAndQuantities = request.getParameter("namesAndQuantities");
+        String total = request.getParameter("total");
         context.setVariable("namesAndQuantities", namesAndQuantities);
+        context.setVariable("total", total);
         engine.process("product/check_out.html", context, response.getWriter());
     }
 

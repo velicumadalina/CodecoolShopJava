@@ -31,6 +31,7 @@ public class PaymentController extends HttpServlet {
         String namesAndQuantities = request.getParameter("namesAndQuantities");
         namesAndQuantities = namesAndQuantities.substring(1, namesAndQuantities.length()-1);
         List<String> productsDetails = Arrays.asList(namesAndQuantities.split(","));
+        String total = request.getParameter("total");
         System.out.println(namesAndQuantities);
         System.out.println(name);
         System.out.println(email);
@@ -38,6 +39,7 @@ public class PaymentController extends HttpServlet {
         context.setVariable("email", email);
         context.setVariable("phone", phone);
         context.setVariable("address", address);
+        context.setVariable("total", total);
         context.setVariable("productsDetails", productsDetails);
         engine.process("product/payment.html", context, response.getWriter());
     }

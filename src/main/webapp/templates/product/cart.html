@@ -45,10 +45,10 @@
     <div class="row" th:each="index : ${#numbers.sequence( 0, #arrays.length(cart)-1)}">
         <div class="col col-sm-12 col-md-6 col-lg-4" id="productss">
             <div class="name" th:if="${cart.size() != 0}">
-                <p th:text="${cart[index].name + ' x' +quantities[index]}"> Product name</p>
+                <h5 th:text="${cart[index].name + ' x' +quantities[index]}"> Product name</h5>
             </div>
             <div class="price" th:if="${cart.size() != 0}">
-                <p th:text="${cart[index].price + cart[index].getDefaultCurrency() }">Product price</p>
+                <h5 th:text="${cart[index].price + cart[index].getDefaultCurrency() }">Product price</h5>
             </div>
         </div>
     </div>
@@ -58,6 +58,7 @@
         <p th:text="${totalPrice}  + ' USD'"> Total</p></div>
     <form action="/check-out" method="POST">
         <input type="hidden" name="namesAndQuantities" th:value="${namesAndQuantities}">
+        <input type="hidden" name="total" th:value="${totalPrice + ' USD'}">
         <button type="submit" id="checkout" class="btn-huge">Check out</button>
     </form>
 

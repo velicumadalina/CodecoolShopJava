@@ -67,7 +67,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-text">
-                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
+                        <p class="lead" th:text="${prod.getPrice() + ' '+ prod.getDefaultCurrency()}">100 USD</p>
                     </div>
                     <div class="card-text">
                         <form action="/cart" method="post">
