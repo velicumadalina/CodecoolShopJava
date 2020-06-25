@@ -34,27 +34,29 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Shopping Cart</h1>
+    <h1><i class="fa fa shopping-cart"></i> Shopping Cart</h1>
 
     <div class="card">
         <strong>Cart content</strong>
-        <h4 th:text="${totalItems}"> cart</h4>
+        <h5 th:text="${totalItems}"> cart</h5>
     </div>
-    <button type="submit"><a href="/check-out">Check out</a></button>
 
 
-    <div id="products" class="row" th:each="index : ${#numbers.sequence( 0, #arrays.length(cart)-1)}">
-        <div class="card">
-            <div class="card-body" th:if="${cart.size() != 0}">
-                <h4 th:text="${cart[index].name}">Product name</h4>
-                <h4 th:text="${cart[index].price}">Product price</h4>
-                <h6 th:text="${quantities[index]}">Product price</h6>
+
+    <div class="row" th:each="index : ${#numbers.sequence( 0, #arrays.length(cart)-1)}">
+        <div class="col col-sm-12 col-md-6 col-lg-4" id="productss">
+            <div class="name" th:if="${cart.size() != 0}">
+                <p  th:text="${cart[index].name + ' x' +quantities[index]}"> Product name</p>
+            </div>
+            <div class="price" th:if="${cart.size() != 0}">
+                <p  th:text="${cart[index].price + cart[index].getDefaultCurrency() }">Product price</p>
             </div>
         </div>
     </div>
     <div>
         <p> Total</p>
-        <p th:text="${totalPrice}"> Total</p></div>
+        <p th:text="${totalPrice}  + ' USD'"> Total</p></div>
+    <button type="submit" id="checkout" class="btn-huge"><a href="/check-out">Check out</a></button>
 </div>
 
 <div th:replace="footer.html :: copy"></div>

@@ -58,9 +58,9 @@
     </div>
 
     <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
-            <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
+        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}" >
+            <div class="card prod">
+                <img class="" width="320px" height="250px" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
                     <h4 class="card-title" th:text="${prod.name}">Product name</h4>
                     <p class="card-text" th:text="${prod.description}">Product description... </p>
@@ -72,7 +72,7 @@
                     <div class="card-text">
                         <form action="/cart" method="post">
                         <input type="hidden" name="add_product" th:value="${prod.id}">
-                        <a class="btn btn-success" href="/cart"><button type="submit"> Add to cart</button></a>
+                        <button type="submit"> Add to cart</button>
                         </form>
                     </div>
                 </div>

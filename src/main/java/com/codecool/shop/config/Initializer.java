@@ -45,11 +45,11 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Amazon Fire", 49.9f, "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
         productDataStore.add(new Product("Lenovo IdeaPad Miix 700", 479, "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
         productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, apple));
-        productDataStore.add(new Product("telefon1", 50, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", phone, samsung));
-        productDataStore.add(new Product("telefon2", 150, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", phone, lenovo));
-        productDataStore.add(new Product("telefon3", 350, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", phone, samsung));
-        productDataStore.add(new Product("laptop1", 250, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", laptop, amazon));
-        productDataStore.add(new Product("laptop2", 350, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", laptop, lenovo));
-        productDataStore.add(new Product("laptop3", 450, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", laptop, apple));
+        productDataStore.add(new Product("Samsung Galaxy S20 Ultra, Dual SIM", 50, "USD", "Galaxy S20 features a sleek modern design, next level capture and share and premium performance.", phone, samsung));
+        productDataStore.add(new Product("Apple iPhone 11, 64GB, Black", 150, "USD", "he iPhone 11 is the successor to last year’s iPhone XR model, with a 6.1-inch LCD display.", phone, apple));
+        productDataStore.add(new Product("Samsung Galaxy S10+", 350, "USD", "The Samsung Galaxy S10+ delivers flagship performance, it's slick and fast, happy to run intensive games at the top settings and does so without getting warm. ", phone, samsung));
+        productDataStore.add(new Product("Lenovo ThinkPad X1 Carbon 7th Gen", 250, "USD", "Business convertible for both homes and offices alike.", laptop, lenovo));
+        productDataStore.add(new Product("Lenovo ThinkPad E15", 350, "USD", "A sleek metallic design on top, performance underneath", laptop, lenovo));
+        productDataStore.add(new Product("Apple MacBook Pro 16inch Touch Bar", 450, "USD", "The best for the brightest", laptop, apple));
     }
 }

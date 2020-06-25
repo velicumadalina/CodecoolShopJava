@@ -35,7 +35,7 @@ public class ProductController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("category", productCategoryDataStore.getAll());
-        context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(1)));
+        context.setVariable("products", productDataStore.getAll());
         context.setVariable("suppliers", supplierCategory.getAll());
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
@@ -52,10 +52,10 @@ public class ProductController extends HttpServlet {
         SupplierDao supplierDao = SupplierDaoMem.getInstance();
         ProductCategoryDao prodDao = ProductCategoryDaoMem.getInstance();
         List<Product> product = new ArrayList<>();
-        if(!supplierToSort.equals("choose_supplier")){
+        if(!supplierToSort.equals("choose_supplier") && categoryToSort.equals("choose_category")){
             product = productDao.getBy(supplierDao.getByName(supplierToSort));
         }
-        if(!categoryToSort.equals("choose_category")) {
+        if(!categoryToSort.equals("choose_category") && supplierToSort.equals("choose_supplier")) {
             product = productDao.getBy(prodDao.getByName(categoryToSort));
         }
         if(!supplierToSort.equals("choose_supplier") && !categoryToSort.equals("choose_category")){
