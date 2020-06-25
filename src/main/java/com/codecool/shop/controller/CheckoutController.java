@@ -16,8 +16,14 @@ public class CheckoutController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
+        WebContext context = new WebContext(request, response, request.getServletContext());
+        String namesAndQuantities = request.getParameter("namesAndQuantities");
+        context.setVariable("namesAndQuantities", namesAndQuantities);
+        engine.process("product/check_out.html", context, response.getWriter());
     }
+
+
 
 
     @Override
