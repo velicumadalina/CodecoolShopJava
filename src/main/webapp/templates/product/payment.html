@@ -36,13 +36,15 @@
 <div class="jumbotron text-center">
     <h1>Payment</h1>
 
-    <div class="card">
-        <h2>You successfully purchased:</h2>
-        <h3 th:each="product, iterStat : ${productsDetails}" th:text="${product}"> product</h3>
-        <h4 th:text="${name}">name</h4>
-        <h4 th:text="${email}">email</h4>
-        <h4 th:text="${phone}">phone</h4>
-        <h4 th:text="${address}">address</h4>
+    <div>
+        <br>
+        <h4>You successfully purchased:</h4><hr>
+        <h5 th:each="product, iterStat : ${productsDetails}" th:text="${product}"> product </h5><br><br>
+        <h5>Your shipping details:</h5><hr>
+        <h5 th:text="${name}">name</h5>
+        <h5 th:text="${email}">email</h5>
+        <h5 th:text="${phone}">phone</h5>
+        <h5 th:text="${address}">address</h5>
     </div>
 
     <div th:replace="footer.html :: copy"></div>
