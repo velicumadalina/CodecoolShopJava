@@ -34,30 +34,13 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Shopping Cart</h1>
+    <h1>Check out</h1>
 
-    <div class="card">
-        <strong>Cart content</strong>
-        <h4 th:text="${totalItems}"> cart</h4>
-    </div>
+
     <button type="submit"><a href="/check-out">Check out</a></button>
 
 
-    <div id="products" class="row" th:each="index : ${#numbers.sequence( 0, #arrays.length(cart)-1)}">
-        <div class="card">
-            <div class="card-body">
-                <h4 th:text="${cart[index].name}">Product name</h4>
-                <h4 th:text="${cart[index].price}">Product price</h4>
-                <h6 th:text="${quantities[index]}">Product price</h6>
-            </div>
-        </div>
-    </div>
-    <div>
-        <p> Total</p>
-        <p th:text="${totalPrice}"> Total</p></div>
-</div>
-
 <div th:replace="footer.html :: copy"></div>
-
+</div>
 </body>
 </html>
