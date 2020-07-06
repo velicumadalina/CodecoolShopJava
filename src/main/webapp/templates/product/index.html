@@ -26,6 +26,8 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
     <div class="card-text">
-        <a class="btn btn-success fa fa-shopping-cart" href="/cart">See Cart</a>
+        <a class="btn btn-success" href="/cart">See Cart<i class="fa fa-shopping-cart 2x" style="color: #eeeeee"></i> </a>
     </div>
 
 </div>
@@ -53,7 +55,7 @@
                     <option th:each="supp,iterStat : ${suppliers}" th:text="${supp.name}">cat</option>
                 </select>
             </label>
-            <button type="submit">Filter</button>
+            <button type="submit">Filter  <i class="fa fa-filter" aria-hidden="true"></i></button>
         </form>
     </div>
 

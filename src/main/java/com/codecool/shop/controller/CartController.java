@@ -26,17 +26,60 @@ public class CartController extends HttpServlet {
     CartDao cartDao = CartDaoMem.getInstance();
     private Cart myCart = cartDao.find(1);
     private float total = 0;
+    List<Product> cart = myCart.getCartContent().stream().distinct().collect(Collectors.toList());
+    List<Integer> productQuantities = myCart.getFrequencies(cart);
+    List<String> namesAndQuantities = myCart.getNamesAndQuantities(cart, productQuantities);
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String itemToAdd = request.getParameter("add_product");
-        ProductDao productDao = ProductDaoMem.getInstance();
-        Product product = productDao.find((Integer.parseInt(itemToAdd)));
-        myCart.add(product);
-        total += product.getPrice();
-        System.out.println(product);
-        response.sendRedirect("/");
+        String newQuantity = request.getParameter("quantity");
+        String originalQuantity = request.getParameter("original-qty");
+        String qtyIndex = request.getParameter("index");
+        if (itemToAdd != null) {
+            ProductDao productDao = ProductDaoMem.getInstance();
+            Product product = productDao.find((Integer.parseInt(itemToAdd)));
+            myCart.add(product);
+            total += product.getPrice();
+            System.out.println(product);
+            response.sendRedirect("/");
+        } else if (Integer.parseInt(newQuantity) != Integer.parseInt(originalQuantity)) {
+            ProductDao productDao = ProductDaoMem.getInstance();
+            Product product = productDao.find(Integer.parseInt(request.getParameter("product_id")));
+            productQuantities.set(Integer.parseInt(qtyIndex), Integer.parseInt(newQuantity));
+            System.out.println(productQuantities + "  index:  " + qtyIndex + "  vechi:  " + originalQuantity + " nou: " + newQuantity);
+            namesAndQuantities = myCart.getNamesAndQuantities(cart, productQuantities);
+            TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
+            WebContext context = new WebContext(request, response, request.getServletContext());
+            if (Integer.parseInt(newQuantity) > Integer.parseInt(originalQuantity)) {
+                for (int i = 0; i < (Integer.parseInt(newQuantity) - Integer.parseInt(originalQuantity)); i++) {
+                    total += product.getPrice();
+                }
+            }
+            else if (Integer.parseInt(newQuantity) < Integer.parseInt(originalQuantity) && (Integer.parseInt(newQuantity)!= 0)) {
+                for (int i = 0; i < ( Integer.parseInt(originalQuantity) - Integer.parseInt(newQuantity)); i++) {
+                    total -= product.getPrice();
+                }
+            }
+            else if (Integer.parseInt(newQuantity) == 0) {
+                total -= product.getPrice();
+                myCart.remove(product);
+                cart.remove(Integer.parseInt(qtyIndex));
+                productQuantities.remove(Integer.parseInt(qtyIndex));
+                namesAndQuantities = myCart.getNamesAndQuantities(cart, productQuantities);
+            }
+            generateCart(response, engine, context);
+        }
+    }
+
+    private void generateCart(HttpServletResponse response, TemplateEngine engine, WebContext context) throws IOException {
+        context.setVariable("cart", cart);
+        context.setVariable("totalPrice", total);
+        context.setVariable("quantities", productQuantities);
+        context.setVariable("totalItems", myCart.totalItems(productQuantities));
+        context.setVariable("namesAndQuantities", namesAndQuantities);
+        engine.process("product/cart.html", context, response.getWriter());
     }
 
 
@@ -44,41 +87,37 @@ public class CartController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
-        List<Product> cart = myCart.getCartContent().stream().distinct().collect(Collectors.toList());
-        List<Integer> productQuantities = getFrequencies(cart, myCart.getCartContent());
-        List<String> namesAndQuantities = getNamesAndQuantities(cart, productQuantities);
-        context.setVariable("cart", cart);
-        context.setVariable("totalPrice", total);
-        context.setVariable("quantities", productQuantities);
-        context.setVariable("totalItems", totalItems(productQuantities));
-        context.setVariable("namesAndQuantities", namesAndQuantities);
-        engine.process("product/cart.html", context, response.getWriter());
+        cart = myCart.getCartContent().stream().distinct().collect(Collectors.toList());
+        productQuantities = myCart.getFrequencies(cart);
+        namesAndQuantities = myCart.getNamesAndQuantities(cart, productQuantities);
+        System.out.println(productQuantities);
+        generateCart(response, engine, context);
     }
 
-    public List<Integer> getFrequencies(List<Product> distinct, List<Product> cartItems){
-        List<Integer> freqs = new ArrayList<>();
-        for(Product elem: distinct){
-            freqs.add(Collections.frequency(cartItems, elem));
-        }
-        return freqs;
-    }
-
-
-    public List<String> getNamesAndQuantities(List<Product> products, List<Integer> quantities){
-        List<String> namesAndQuantities = new ArrayList<>();
-        for (int i=0; i<products.size(); i++){
-            namesAndQuantities.add(products.get(i).getName() + " - " + quantities.get(i) + " item(s)");
-        }
-        return namesAndQuantities;
-    }
-
-    public int totalItems(List<Integer> cart) {
-        int total = 0;
-        for (Integer quantity : cart) {
-            total += quantity;
-        }
-        return total;
-    }
+//    public List<Integer> getFrequencies(List<Product> distinct, List<Product> cartItems) {
+//        List<Integer> freqs = new ArrayList<>();
+//        for (Product elem : distinct) {
+//            freqs.add(Collections.frequency(cartItems, elem));
+//        }
+//        return freqs;
+//    }
+//
+//
+//    public List<String> getNamesAndQuantities(List<Product> products, List<Integer> quantities) {
+//        List<String> namesAndQuantities = new ArrayList<>();
+//        for (int i = 0; i < products.size(); i++) {
+//            namesAndQuantities.add(products.get(i).getName() + " - " + quantities.get(i) + " item(s)");
+//        }
+//        return namesAndQuantities;
+//    }
+//
+//    public int totalItems(List<Integer> cart) {
+//        int total = 0;
+//        for (Integer quantity : cart) {
+//            total += quantity;
+//        }
+//        return total;
+//    }
 
 
 }

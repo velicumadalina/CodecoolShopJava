@@ -29,6 +29,8 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -45,7 +47,14 @@
     <div class="row" th:each="index : ${#numbers.sequence( 0, #arrays.length(cart)-1)}">
         <div class="col col-sm-12 col-md-6 col-lg-4" id="productss">
             <div class="name" th:if="${cart.size() != 0}">
-                <h5 th:text="${cart[index].name + ' x' +quantities[index]}"> Product name</h5>
+                <h5 th:text="${cart[index].name}"> Product name</h5>
+                <form action="/cart" method="post">
+                    <input type="hidden" name="index" th:value="${index}">
+                    <input type="hidden" name="original-qty" th:value="${quantities[index]}">
+                    <input type="hidden" name="product_id" th:value="${cart[index].id}">
+                    <input type="number" id="quantity" name="quantity" min="0" max="5" th:value="${quantities[index]}">
+                    <button type="submit"><i class="fa fa-check" aria-hidden="true" style="color: #4b8f29"></i></button>
+                </form>
             </div>
             <div class="price" th:if="${cart.size() != 0}">
                 <h5 th:text="${cart[index].price + cart[index].getDefaultCurrency() }">Product price</h5>
