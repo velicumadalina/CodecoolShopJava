@@ -1,31 +1,30 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
-import com.codecool.shop.dao.ProductCategoryDao;
+import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.ProductDao;
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
+import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.IContext;
 import org.thymeleaf.context.WebContext;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
-@WebServlet(name = "CartController", urlPatterns = {"/cart"}, loadOnStartup = 1)
+@WebServlet(name = "CartController", urlPatterns = {"/" + "cart"}, loadOnStartup = 1)
 public class CartController extends HttpServlet {
-    private Cart myCart = new Cart();
+    CartDao cartDao = CartDaoMem.getInstance();
+    private Cart myCart = cartDao.find(1);
     private float total = 0;
 
 

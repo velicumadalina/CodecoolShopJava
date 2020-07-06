@@ -2,10 +2,11 @@ package com.codecool.shop.model;
 
 import java.util.ArrayList;
 
-public class Cart {
+public class Cart extends BaseModel{
     ArrayList<Product> cartContent;
 
-    public Cart() {
+    public Cart(int id) {
+        super(id);
         this.cartContent = new ArrayList<>();
     }
 
