@@ -36,18 +36,28 @@
 <div class="jumbotron text-center">
     <h1>Payment</h1>
 
+<!--    <div>-->
+<!--        <br>-->
+<!--        <h4>You successfully purchased:</h4><hr>-->
+<!--        <h5 th:each="product, iterStat : ${productsDetails}" th:text="${product}"> product </h5>-->
+<!--        <h5 th:text="${total}">totax</h5>-->
+<!--        <br><br>-->
+<!--        <h5>Your shipping details:</h5><hr>-->
+<!--        <h5 th:text="${name}">name</h5>-->
+<!--        <h5 th:text="${email}">email</h5>-->
+<!--        <h5 th:text="${phone}">phone</h5>-->
+<!--        <h5 th:text="${address}">address</h5>-->
+<!--    </div>-->
+
+
+
     <div>
-        <br>
-        <h4>You successfully purchased:</h4><hr>
-        <h5 th:each="product, iterStat : ${productsDetails}" th:text="${product}"> product </h5>
-        <h5 th:text="${total}">totax</h5>
-        <br><br>
-        <h5>Your shipping details:</h5><hr>
-        <h5 th:text="${name}">name</h5>
-        <h5 th:text="${email}">email</h5>
-        <h5 th:text="${phone}">phone</h5>
-        <h5 th:text="${address}">address</h5>
+        <h4>Payment method</h4>
+        <form action="/payment" method="POST">
+            <button type="submit">Continue</button>
+        </form>
     </div>
+
 
     <div th:replace="footer.html :: copy"></div>
 </div>
