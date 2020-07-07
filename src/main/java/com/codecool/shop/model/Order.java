@@ -33,6 +33,8 @@ public class Order extends BaseModel {
         return stringBuilder.toString();
     }
 
+    public String getEmail(){ return email; }
+
 
 
 }
