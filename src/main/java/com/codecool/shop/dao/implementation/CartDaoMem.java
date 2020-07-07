@@ -37,11 +37,11 @@ public class CartDaoMem implements CartDao {
 
     @Override
     public void remove(int id) {
-
+        allCarts.remove(id);
     }
 
     @Override
     public List<Cart> getAll() {
-        return null;
+        return allCarts;
     }
 }

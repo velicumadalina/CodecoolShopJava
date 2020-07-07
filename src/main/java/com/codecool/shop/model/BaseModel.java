@@ -22,6 +22,10 @@ public class BaseModel {
         this.description = description;
     }
 
+    public BaseModel() {
+
+    }
+
 
     public int getId() {
         return id;
