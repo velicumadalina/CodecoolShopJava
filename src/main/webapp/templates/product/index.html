@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head  th:replace="header.html :: copy">
+<head th:replace="header.html :: copy">
     <title>Codecool Shop</title>
 </head>
 
@@ -11,7 +11,8 @@
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
     <div class="card-text">
-        <a class="btn btn-success" href="/cart">See Cart<i class="fa fa-shopping-cart 2x" style="color: #eeeeee"></i> </a>
+        <a class="btn btn-success" href="/cart">See Cart<i class="fa fa-shopping-cart 2x" style="color: #eeeeee"></i>
+        </a>
     </div>
 
 </div>
@@ -19,26 +20,27 @@
 <div class="container">
     <div class="card">
         <form action="/" method="POST">
-        <label>
-            <select name="sort_category">
-                <option value="choose_category">Choose category</option>
-                <option th:each="cat,iterStat : ${category}" th:text="${cat.name}">cat</option>
-            </select>
-        </label>
+            <label>
+                <select name="sort_category">
+                    <option value="choose_category">Choose category</option>
+                    <option th:each="cat,iterStat : ${category}" th:text="${cat.name}">cat</option>
+                </select>
+            </label>
             <label>
                 <select name="sort_supplier">
                     <option value="choose_supplier">Choose supplier</option>
                     <option th:each="supp,iterStat : ${suppliers}" th:text="${supp.name}">cat</option>
                 </select>
             </label>
-            <button type="submit">Filter  <i class="fa fa-filter" aria-hidden="true"></i></button>
+            <button type="submit">Filter <i class="fa fa-filter" aria-hidden="true"></i></button>
         </form>
     </div>
 
     <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}" >
+        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card prod">
-                <img class="" width="320px" height="250px" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
+                <img class="" width="320px" height="250px" src="http://placehold.it/400x250/000/fff"
+                     th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
                     <h4 class="card-title" th:text="${prod.name}">Product name</h4>
                     <p class="card-text" th:text="${prod.description}">Product description... </p>
@@ -49,8 +51,8 @@
                     </div>
                     <div class="card-text">
                         <form action="/cart" method="post">
-                        <input type="hidden" name="add_product" th:value="${prod.id}">
-                        <button type="submit"> Add to cart</button>
+                            <input type="hidden" name="add_product" th:value="${prod.id}">
+                            <button type="submit"> Add to cart</button>
                         </form>
                     </div>
                 </div>

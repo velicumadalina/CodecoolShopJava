@@ -1,8 +1,11 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.OrderDao;
+import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.OrderDaoMem;
+import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Order;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -26,19 +29,16 @@ public class OrderController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        CartDao carts = CartDaoMem.getInstance();
+        Cart currentCart = carts.find(1);
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
         String name = request.getParameter("fname") + " " + request.getParameter("lname");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
-        String namesAndQuantities = request.getParameter("namesAndQuantities");
-        namesAndQuantities = namesAndQuantities.substring(1, namesAndQuantities.length()-1);
-        List<String> productsDetails = Arrays.asList(namesAndQuantities.split(","));
-        String total = request.getParameter("total");
-        System.out.println(namesAndQuantities);
-        System.out.println(name);
-        System.out.println(email);
+        List<String> productsDetails = currentCart.getNamesAndQuantities();
+        String total = String.valueOf(currentCart.totalPrice());
         context.setVariable("name", name);
         context.setVariable("email", email);
         context.setVariable("phone", phone);
