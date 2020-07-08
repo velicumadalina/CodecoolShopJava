@@ -23,7 +23,7 @@ SET row_security = off;
 CREATE SCHEMA public;
 
 
-ALTER SCHEMA public OWNER TO madii;
+ALTER SCHEMA public OWNER TO adina;
 
 --
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
@@ -48,7 +48,7 @@ CREATE TABLE public.categories (
 );
 
 
-ALTER TABLE public.categories OWNER TO madii;
+ALTER TABLE public.categories OWNER TO adina;
 
 --
 -- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -63,7 +63,7 @@ CREATE SEQUENCE public.categories_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.categories_id_seq OWNER TO madii;
+ALTER TABLE public.categories_id_seq OWNER TO adina;
 
 --
 -- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -88,7 +88,7 @@ CREATE TABLE public.products (
 );
 
 
-ALTER TABLE public.products OWNER TO madii;
+ALTER TABLE public.products OWNER TO adina;
 
 --
 -- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -103,7 +103,7 @@ CREATE SEQUENCE public.products_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.products_id_seq OWNER TO madii;
+ALTER TABLE public.products_id_seq OWNER TO adina;
 
 --
 -- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -123,7 +123,7 @@ CREATE TABLE public.suppliers (
 );
 
 
-ALTER TABLE public.suppliers OWNER TO madii;
+ALTER TABLE public.suppliers OWNER TO adina;
 
 --
 -- Name: suppliers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -138,7 +138,7 @@ CREATE SEQUENCE public.suppliers_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.suppliers_id_seq OWNER TO madii;
+ALTER TABLE public.suppliers_id_seq OWNER TO adina;
 
 --
 -- Name: suppliers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
