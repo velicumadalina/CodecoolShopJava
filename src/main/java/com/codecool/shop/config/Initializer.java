@@ -2,6 +2,7 @@ package com.codecool.shop.config;
 
 import com.codecool.shop.dao.*;
 import com.codecool.shop.dao.implementation.*;
+import com.codecool.shop.dao.sql.SupplierDaoJDBC;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
@@ -10,6 +11,7 @@ import com.codecool.shop.model.Supplier;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.sql.SQLException;
 
 @WebListener
 public class Initializer implements ServletContextListener {
@@ -55,7 +57,10 @@ public class Initializer implements ServletContextListener {
         //setting up the cart
         cartDao.add(new Cart(1));
 
-        //setting up order
+        //setting up supplier in db
+        SupplierDao supplierDaoJDBC = new SupplierDaoJDBC();
+        supplierDaoJDBC.add(apple);
+
 
     }
 }
