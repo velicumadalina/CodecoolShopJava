@@ -23,7 +23,7 @@
                      th:attr="src='/static/img/product_' + ${cart[index].id} + '.jpg'" alt=""/>
 
             </div>
-            <div class="description">
+            <div class="description" th:if="${cart.size() != 0}">
                 <h6 th:text="${cart[index].name}"> Product name</h6>
                 <form action="/cart" method="post">
                     <input type="hidden" name="index" th:value="${index}">
