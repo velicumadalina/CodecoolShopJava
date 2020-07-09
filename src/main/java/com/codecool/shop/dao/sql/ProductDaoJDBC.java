@@ -7,6 +7,7 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
+import org.w3c.dom.ls.LSOutput;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDaoJDBC implements ProductDao {
-    private ProductCategoryDao productCategoryDao;
-    private SupplierDao supplierDao;
+    private ProductCategoryDao productCategoryDao = new ProductCategoryDaoJDBC();
+    private SupplierDao supplierDao = new SupplierDaoJDBC();
 
 
     @Override
@@ -48,6 +49,7 @@ public class ProductDaoJDBC implements ProductDao {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                System.out.println(resultSet.getInt("category_id"));
                 tempProduct = new Product(
                         resultSet.getString("name"),
                         resultSet.getInt("price"),
@@ -55,7 +57,7 @@ public class ProductDaoJDBC implements ProductDao {
                         resultSet.getString("description"),
                         productCategoryDao.find(resultSet.getInt("category_id")),
                         supplierDao.find(resultSet.getInt("supplier_id")));
-                tempProduct.setId(resultSet.getInt("id"));
+                tempProduct.setId(id);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,6 +71,7 @@ public class ProductDaoJDBC implements ProductDao {
         try (Connection connection = dbConnection.getConnection();) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, id);
+            statement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

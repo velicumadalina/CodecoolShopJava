@@ -62,11 +62,15 @@ public class Initializer implements ServletContextListener {
         //setting up supplier in db
         SupplierDao supplierDaoJDBC = new SupplierDaoJDBC();
         supplierDaoJDBC.add(apple);
+        supplierDaoJDBC.add(samsung);
 
         //setting up product in db
         ProductDao productDaoJDBC = new ProductDaoJDBC();
-        productDaoJDBC.add(new Product("Apple MacBook Pro 16inch Touch Bar", 450, "USD", "The best for the brightest", laptop, apple));
+        Product product1 = new Product("Apple MacBook Pro 16inch Touch Bar", 450, "USD", "The best for the brightest", laptop, apple);
+        productDaoJDBC.add(product1);
         productDaoJDBC.add(new Product("Lenovo ThinkPad E15", 350, "USD", "A sleek metallic design on top, performance underneath", laptop, lenovo));
+        productDaoJDBC.add(new Product("Samsung Galaxy S10+", 350, "USD", "The Samsung Galaxy S10+ delivers flagship performance, it's slick and fast, happy to run intensive games at the top settings and does so without getting warm. ", phone, samsung));
+
 
         //setting up categories in db
         ProductCategoryDao productCategoryDaoJDBC = new ProductCategoryDaoJDBC();
