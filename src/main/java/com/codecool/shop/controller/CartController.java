@@ -5,6 +5,7 @@ import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.sql.ProductDaoJDBC;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import org.thymeleaf.TemplateEngine;
@@ -38,14 +39,16 @@ public class CartController extends HttpServlet {
         String originalQuantity = request.getParameter("original-qty");
         String qtyIndex = request.getParameter("index");
         if (itemToAdd != null) {
-            ProductDao productDao = ProductDaoMem.getInstance();
+            ProductDao productDao = new ProductDaoJDBC();
             Product product = productDao.find((Integer.parseInt(itemToAdd)));
+            System.out.println(itemToAdd);
+            System.out.println(product);
             myCart.add(product);
             total += product.getPrice();
             System.out.println(product);
             response.sendRedirect("/");
         } else if (Integer.parseInt(newQuantity) != Integer.parseInt(originalQuantity)) {
-            ProductDao productDao = ProductDaoMem.getInstance();
+            ProductDao productDao = new ProductDaoJDBC();
             Product product = productDao.find(Integer.parseInt(request.getParameter("product_id")));
             productQuantities.set(Integer.parseInt(qtyIndex), Integer.parseInt(newQuantity));
             System.out.println(productQuantities + "  index:  " + qtyIndex + "  vechi:  " + originalQuantity + " nou: " + newQuantity);
