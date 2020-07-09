@@ -24,7 +24,7 @@ public class SupplierDaoJDBC implements SupplierDao {
     @Override
     public void add(Supplier supplier) {
         String query = "INSERT INTO suppliers (id, name, description) " +
-                "VALUES (?,?,?)";
+                "VALUES (?,?,?) ON CONFLICT DO NOTHING";
         try (Connection connection = dbConnection.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, supplier.getId());
@@ -69,7 +69,7 @@ public class SupplierDaoJDBC implements SupplierDao {
 
     @Override
     public List<Supplier> getAll() {
-        Supplier tempSupplier = null;
+        Supplier tempSupplier;
         List<Supplier> suppliers = new ArrayList<>();
         String query = "SELECT * FROM suppliers";
         try (Connection connection = dataSource.getConnection()) {

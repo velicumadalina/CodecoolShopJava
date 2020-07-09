@@ -2,6 +2,8 @@ package com.codecool.shop.config;
 
 import com.codecool.shop.dao.*;
 import com.codecool.shop.dao.implementation.*;
+import com.codecool.shop.dao.sql.ProductCategoryDaoJDBC;
+import com.codecool.shop.dao.sql.ProductDaoJDBC;
 import com.codecool.shop.dao.sql.SupplierDaoJDBC;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
@@ -61,6 +63,15 @@ public class Initializer implements ServletContextListener {
         SupplierDao supplierDaoJDBC = new SupplierDaoJDBC();
         supplierDaoJDBC.add(apple);
 
+        //setting up product in db
+        ProductDao productDaoJDBC = new ProductDaoJDBC();
+        productDaoJDBC.add(new Product("Apple MacBook Pro 16inch Touch Bar", 450, "USD", "The best for the brightest", laptop, apple));
+        productDaoJDBC.add(new Product("Lenovo ThinkPad E15", 350, "USD", "A sleek metallic design on top, performance underneath", laptop, lenovo));
+
+        //setting up categories in db
+        ProductCategoryDao productCategoryDaoJDBC = new ProductCategoryDaoJDBC();
+        productCategoryDaoJDBC.add(phone);
+        productCategoryDaoJDBC.add(laptop);
 
     }
 }

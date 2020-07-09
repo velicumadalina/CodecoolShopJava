@@ -8,10 +8,13 @@ public class Product extends BaseModel {
     private Currency defaultCurrency;
     private ProductCategory productCategory;
     private Supplier supplier;
+    private static int id = 1;
 
 
     public Product(String name, float defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
         super(name, description);
+        id++;
+        setId(id);
         this.setPrice(defaultPrice, currencyString);
         this.setSupplier(supplier);
         this.setProductCategory(productCategory);
@@ -42,13 +45,13 @@ public class Product extends BaseModel {
         this.defaultPrice = price;
         this.defaultCurrency = Currency.getInstance(currency);
     }
-
-    public Product getProductByID(int id){
-        if (this.id == id){
-            return this;
-        }
-        return null;
-    }
+//
+//    public Product getProductByID(int id){
+//        if (this.id == id){
+//            return this;
+//        }
+//        return null;
+//    }
 
     public ProductCategory getProductCategory() {
         return productCategory;

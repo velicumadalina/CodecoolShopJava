@@ -7,7 +7,6 @@ import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -16,15 +15,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductDaoMemTest {
-    private ProductDao productDao;
-    private SupplierDao supplierDao;
-    private ProductCategoryDao productCategoryDao;
-    private Supplier supplier;
-    private ProductCategory productCategory;
-    private Product product1;
+    private static ProductDao productDao;
+    private static SupplierDao supplierDao;
+    private static ProductCategoryDao productCategoryDao;
+    private static Supplier supplier;
+    private static ProductCategory productCategory;
+    private static Product product1;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         productDao = ProductDaoMem.getInstance();
         supplierDao = SupplierDaoMem.getInstance();
         productCategoryDao = ProductCategoryDaoMem.getInstance();
@@ -41,16 +40,16 @@ class ProductDaoMemTest {
         assertNotNull(productDao);
     }
 
-    @Test
-    void testFilterByReturnsValue() {
-        Supplier filteredSupp = new Supplier("GoodSupplier", "GoodDescriptions");
-        supplierDao.add(filteredSupp);
-        Product product2 = new Product("GoodName", 68.9f, "USD", "TestDescription", productCategory, filteredSupp);
-        productDao.add(product2);
-        List<Product> products = new ArrayList<>();
-        products.add(product2);
-        assertEquals(products, productDao.filterBy("ProductCategory", "GoodSupplier"));
-    }
+//    @Test
+//    void testFilterByReturnsValue() {
+//        Supplier filteredSupp = new Supplier("GoodSupplier", "GoodDescriptions");
+//        supplierDao.add(filteredSupp);
+//        Product product2 = new Product("GoodName", 68.9f, "USD", "TestDescription", productCategory, filteredSupp);
+//        productDao.add(product2);
+//        List<Product> products = new ArrayList<>();
+//        products.add(product2);
+//        assertEquals(products, productDao.filterBy("ProductCategory", "GoodSupplier"));
+//    }
 
     @Test
     void testAdd() {
@@ -80,7 +79,7 @@ class ProductDaoMemTest {
         productDao.add(product2);
         List<Product> products = new ArrayList<>();
         products.add(product2);
-        assertEquals(products, productDao.getBy(supplier));
+        assertEquals(products, productDao.getBy(filteredSupp));
     }
 
     @Test
