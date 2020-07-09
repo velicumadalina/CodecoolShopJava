@@ -87,13 +87,14 @@ public class ProductDaoJDBC implements ProductDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 tempProduct = new Product(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getInt("price"),
                         resultSet.getString("currency"),
                         resultSet.getString("description"),
                         productCategoryDao.find(resultSet.getInt("category_id")),
                         supplierDao.find(resultSet.getInt("supplier_id")));
-                tempProduct.setId(resultSet.getInt("id"));
+                products.add(tempProduct);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -112,13 +113,14 @@ public class ProductDaoJDBC implements ProductDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 tempProduct = new Product(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getInt("price"),
                         resultSet.getString("currency"),
                         resultSet.getString("description"),
                         productCategoryDao.find(resultSet.getInt("category_id")),
                         supplierDao.find(resultSet.getInt("supplier_id")));
-                tempProduct.setId(resultSet.getInt("id"));
+                products.add(tempProduct);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -137,13 +139,14 @@ public class ProductDaoJDBC implements ProductDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 tempProduct = new Product(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getInt("price"),
                         resultSet.getString("currency"),
                         resultSet.getString("description"),
                         productCategoryDao.find(resultSet.getInt("category_id")),
                         supplierDao.find(resultSet.getInt("supplier_id")));
-                tempProduct.setId(resultSet.getInt("id"));
+                products.add(tempProduct);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -163,13 +166,14 @@ public class ProductDaoJDBC implements ProductDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 tempProduct = new Product(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getInt("price"),
                         resultSet.getString("currency"),
                         resultSet.getString("description"),
                         productCategoryDao.find(resultSet.getInt("category_id")),
                         supplierDao.find(resultSet.getInt("supplier_id")));
-                tempProduct.setId(resultSet.getInt("id"));
+                products.add(tempProduct);
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -36,9 +36,9 @@ public class SupplierDaoJDBC implements SupplierDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 tempSupplier = new Supplier(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"));
-//                tempSupplier.setId(resultSet.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,9 +68,9 @@ public class SupplierDaoJDBC implements SupplierDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 tempSupplier = new Supplier(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"));
-//                tempSupplier.setId(resultSet.getInt("id"));
                 suppliers.add(tempSupplier);
             }
         } catch (SQLException e) {
@@ -89,9 +89,9 @@ public class SupplierDaoJDBC implements SupplierDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 tempSupplier = new Supplier(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"));
-//                tempSupplier.setId(resultSet.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

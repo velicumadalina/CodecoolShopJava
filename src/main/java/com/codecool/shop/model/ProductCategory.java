@@ -6,12 +6,20 @@ import java.util.List;
 public class ProductCategory extends BaseModel {
     private String department;
     private List<Product> products;
-    private static int id= 1;
+    private static int counter= 1;
 
     public ProductCategory(String name, String department, String description) {
         super(name);
-        setId(id);
-        id++;
+        setId(counter);
+        counter++;
+        this.department = department;
+        this.description = description;
+        this.products = new ArrayList<>();
+    }
+
+    public ProductCategory(int id, String name, String department, String description) {
+        super(name);
+        this.id = id;
         this.department = department;
         this.description = description;
         this.products = new ArrayList<>();
