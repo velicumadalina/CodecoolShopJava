@@ -54,6 +54,7 @@ public class ProductController extends HttpServlet {
         List<Product> product = new ArrayList<>();
         if(!supplierToSort.equals("choose_supplier") && categoryToSort.equals("choose_category")){
             product = productDao.getBy(supplierDao.getByName(supplierToSort));
+            System.out.println(product);
         }
         if(!categoryToSort.equals("choose_category") && supplierToSort.equals("choose_supplier")) {
             product = productDao.getBy(prodDao.getByName(categoryToSort));

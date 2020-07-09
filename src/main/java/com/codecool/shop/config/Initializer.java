@@ -43,7 +43,6 @@ public class Initializer implements ServletContextListener {
         productCategoryDataStore.add(phone);
         ProductCategory laptop = new ProductCategory("Laptop", "Hardware", "A laptop");
         productCategoryDataStore.add(laptop);
-        System.out.println("DIN INITIALIZER" + productCategoryDataStore.getAll());
 
         //setting up products and printing it
         productDataStore.add(new Product("Amazon Fire", 49.9f, "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
@@ -60,23 +59,7 @@ public class Initializer implements ServletContextListener {
         //setting up the cart
         cartDao.add(new Cart(1));
 
-//        //setting up supplier in db
-//        SupplierDao supplierDaoJDBC = new SupplierDaoJDBC();
-//        supplierDaoJDBC.add(apple);
-//        supplierDaoJDBC.add(samsung);
 
-//        //setting up product in db
-//        ProductDao productDaoJDBC = new ProductDaoJDBC();
-//        Product product1 = new Product("Apple MacBook Pro 16inch Touch Bar", 450, "USD", "The best for the brightest", laptop, apple);
-//        productDaoJDBC.add(product1);
-//        productDaoJDBC.add(new Product("Lenovo ThinkPad E15", 350, "USD", "A sleek metallic design on top, performance underneath", laptop, lenovo));
-//        productDaoJDBC.add(new Product("Samsung Galaxy S10+", 350, "USD", "The Samsung Galaxy S10+ delivers flagship performance, it's slick and fast, happy to run intensive games at the top settings and does so without getting warm. ", phone, samsung));
-//
-//
-//        //setting up categories in db
-//        ProductCategoryDao productCategoryDaoJDBC = new ProductCategoryDaoJDBC();
-//        productCategoryDaoJDBC.add(phone);
-//        productCategoryDaoJDBC.add(laptop);
 
     }
 }
