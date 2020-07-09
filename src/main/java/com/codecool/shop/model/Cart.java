@@ -1,8 +1,6 @@
 package com.codecool.shop.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cart extends BaseModel{
@@ -25,12 +23,20 @@ public class Cart extends BaseModel{
     }
 
 
-
+    public int getProductFrequency(Product product){
+        int frequency = 0;
+        for(Product elem: cartContent){
+            if(elem.getName().equals(product.getName())){
+                frequency++;
+            }
+        }
+        return frequency;
+    }
 
     public List<Integer> getFrequencies() {
         List<Integer> freqs = new ArrayList<>();
-        for (Product elem : cartContent.stream().distinct().collect(Collectors.toList())) {
-            freqs.add(Collections.frequency(cartContent, elem));
+        for (Product elem : getDistinctProductsJDBC()) {
+            freqs.add(getProductFrequency(elem));
         }
         return freqs;
     }
@@ -39,11 +45,14 @@ public class Cart extends BaseModel{
         return cartContent.stream().distinct().collect(Collectors.toList());
     }
 
+    public List<Product> getDistinctProductsJDBC(){
+        Set<String> set = new HashSet<>(cartContent.size());
+        return cartContent.stream().filter(p -> set.add(p.getName())).collect(Collectors.toList());    }
 
     public List<String> getNamesAndQuantities() {
         List<String> namesAndQuantities = new ArrayList<>();
-        for (int i = 0; i < cartContent.size(); i++) {
-            namesAndQuantities.add(cartContent.get(i).getName() + " - " + getFrequencies().get(i) + " item(s)");
+        for (int i = 0; i < getDistinctProductsJDBC().size(); i++) {
+            namesAndQuantities.add(getDistinctProductsJDBC().get(i).getName() + " - " + getFrequencies().get(i) + " item(s)");
         }
         return namesAndQuantities;
     }

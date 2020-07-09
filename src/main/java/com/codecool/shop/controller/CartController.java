@@ -32,6 +32,7 @@ public class CartController extends HttpServlet {
     List<String> namesAndQuantities = myCart.getNamesAndQuantities();
 
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String itemToAdd = request.getParameter("add_product");
@@ -88,10 +89,17 @@ public class CartController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
-        cart = myCart.getCartContent().stream().distinct().collect(Collectors.toList());
+        cart = myCart.getDistinctProductsJDBC();
+        System.out.println(cart);
         productQuantities = myCart.getFrequencies();
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" +productQuantities);
+        System.out.println("Cartul intreg este: " + myCart.getCartContent() + "\n" + " cartul fara repetitii este " + cart + "\n"+ " si frecventele sunt " + productQuantities);
         namesAndQuantities = myCart.getNamesAndQuantities();
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        System.out.println(cart);
         System.out.println(productQuantities);
+        System.out.println(namesAndQuantities);
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
         generateCart(response, engine, context);
     }
 }
