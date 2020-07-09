@@ -3,6 +3,7 @@
 
 <head  th:replace="header.html :: copy">
     <title>Payment</title>
+    <script src="static/js/payment.js" defer></script>
 </head>
 
 <body>
@@ -10,8 +11,18 @@
 <div class="jumbotron text-center">
     <h1>Payment</h1>
 
+    <h4>Payment method</h4>
+    <div class="card">
+        <input type="checkbox" name="paypal" id="paypal">
+        <label for="paypal"> Paypal</label><br>
+    </div>
+    <div class="card">
+        <input type="checkbox" name="credit_card" id="credit_card">
+        <label for="credit_card"> Credit card</label><br>
+    </div>
+</div>
+
     <div>
-        <h4>Payment method</h4>
         <form action="/payment" method="POST">
             <button type="submit">Continue</button>
         </form>
@@ -19,6 +30,5 @@
 
 
     <div th:replace="footer.html :: copy"></div>
-</div>
 </body>
 </html>

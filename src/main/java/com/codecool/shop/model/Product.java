@@ -13,11 +13,11 @@ public class Product extends BaseModel {
 
     public Product(String name, float defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
         super(name, description);
-        id++;
         setId(id);
         this.setPrice(defaultPrice, currencyString);
         this.setSupplier(supplier);
         this.setProductCategory(productCategory);
+        id++;
     }
 
     public float getDefaultPrice() {
