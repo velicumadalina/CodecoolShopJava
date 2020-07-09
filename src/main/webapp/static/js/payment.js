@@ -1,7 +1,7 @@
-let paypal = document.getElementById("paypal").checked;
-let card = document.getElementById("credit_card").checked;
+let paypal = document.getElementById("paypal");
+let card = document.getElementById("credit_card");
 
-if(paypal){
+if(paypal.checked){
     alert("a mers");
 }
 
