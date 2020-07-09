@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header.html :: copy">
+    <link rel="stylesheet" type="text/css" href="static/css/paypal.css">
+    <title>Codecool Shop</title>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <div class="container">
+        <section id="login" class="login" data-role="page" data-title="Log in to your PayPal account">
+            <div class="corral">
+                <div id="content" class="contentContainer">
+                    <header>
+                        <p class="paypal-logo paypal-logo-long">
+                            <img src="static/img/paypal-logo-129x32.png" width="300px" height="100px"></center>
+                        </p>
+                    </header>
+                    <div id="passwordSection" class="clearfix">
+                        <div class="textInput" id="login_emaildiv">
+                            <div class="fieldWrapper">
+                                <label for="email" class="fieldLabel">Email</label>
+                                <input id="email" name="login_email" type="email" class="hasHelp  validateEmpty "
+                                       required="required" aria-required="true" value="" autocomplete="off"
+                                       placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="textInput lastInputField" id="login_passworddiv">
+                            <div class="fieldWrapper"><label for="password" class="fieldLabel">Password</label>
+                                <input id="password" name="login_password" type="password"
+                                       class="hasHelp  validateEmpty " required="required" aria-required="true"
+                                       value=""
+                                       placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions actionsSpaced">
+                        <form action="/payment" method="POST">
+                            <button class="button actionContinue" type="submit" id="btnLogin" name="btnLogin"
+                                    value="Login">Log In
+                            </button>
+                        </form>
+                    </div>
+                    <div class="forgotLink"><a href="#" id="forgotPasswordModal"
+                                               class="scTrack:unifiedlogin-click-forgot-password">Having trouble
+                        logging
+                        in?</a></div>
+                    <input type="hidden" id="bp_mid" name="bp_mid" value="">
+
+
+                    <a href="#" class="button secondary" id="createAccount">Sign Up</a></div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+<div th:replace="footer.html :: copy"></div>
+
+</html>

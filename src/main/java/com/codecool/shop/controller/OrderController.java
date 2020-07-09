@@ -45,7 +45,9 @@ public class OrderController extends HttpServlet {
         context.setVariable("address", address);
         context.setVariable("total", total);
         context.setVariable("productsDetails", productsDetails);
-        orderDao.add(new Order(1, total, name, email, phone, address, productsDetails));
+        Order order = new Order(1, total, name, email, phone, address, productsDetails);
+        orderDao.add(order);
+        System.out.println("ORDERRRR" +order );
 //        String orderInfo = orderDao.find(1).getOrderInfo();
         engine.process("product/payment.html", context, response.getWriter());
     }
