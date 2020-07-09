@@ -11,15 +11,6 @@ import java.util.List;
 import com.codecool.shop.connection.dbConnection;
 
 public class SupplierDaoJDBC implements SupplierDao {
-    private DataSource dataSource;
-//
-//    public SupplierDaoJDBC() throws SQLException {
-//        this(dbConnection.getConnection());
-//    }
-//
-//    public SupplierDaoJDBC(DataSource dataSource) {
-//        this.dataSource = dataSource;
-//    }
 
     @Override
     public void add(Supplier supplier) {
@@ -40,7 +31,7 @@ public class SupplierDaoJDBC implements SupplierDao {
     public Supplier find(int id) {
         Supplier tempSupplier = null;
         String query = "SELECT * FROM suppliers WHERE id = ?";
-        try (Connection connection = dataSource.getConnection();) {
+        try (Connection connection = dbConnection.getConnection();) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -59,7 +50,7 @@ public class SupplierDaoJDBC implements SupplierDao {
     @Override
     public void remove(int id) {
         String query = "DELETE FROM suppliers WHERE id = ?";
-        try (Connection connection = dataSource.getConnection();) {
+        try (Connection connection = dbConnection.getConnection();) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, id);
         } catch (SQLException throwables) {
@@ -72,7 +63,7 @@ public class SupplierDaoJDBC implements SupplierDao {
         Supplier tempSupplier;
         List<Supplier> suppliers = new ArrayList<>();
         String query = "SELECT * FROM suppliers";
-        try (Connection connection = dataSource.getConnection()) {
+        try (Connection connection = dbConnection.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -92,7 +83,7 @@ public class SupplierDaoJDBC implements SupplierDao {
     public Supplier getByName(String name) {
         Supplier tempSupplier = null;
         String query = "SELECT * FROM suppliers WHERE name = ?";
-        try (Connection connection = dataSource.getConnection();) {
+        try (Connection connection = dbConnection.getConnection();) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
