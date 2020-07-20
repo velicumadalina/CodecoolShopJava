@@ -7,6 +7,9 @@ import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.dao.sql.ProductCategoryDaoJDBC;
+import com.codecool.shop.dao.sql.ProductDaoJDBC;
+import com.codecool.shop.dao.sql.SupplierDaoJDBC;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import org.thymeleaf.TemplateEngine;
@@ -28,9 +31,9 @@ public class ProductController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ProductDao productDataStore = ProductDaoMem.getInstance();
-        ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
-        SupplierDao supplierCategory = SupplierDaoMem.getInstance();
+        ProductDao productDataStore = new ProductDaoJDBC();
+        ProductCategoryDao productCategoryDataStore =new ProductCategoryDaoJDBC();
+        SupplierDao supplierCategory = new SupplierDaoJDBC();
         System.out.println(productCategoryDataStore.getAll());
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -43,9 +46,9 @@ public class ProductController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String categoryToSort = request.getParameter("sort_category");
         String supplierToSort =  request.getParameter("sort_supplier");
-        ProductDao productDao = ProductDaoMem.getInstance();
-        SupplierDao supplierDao = SupplierDaoMem.getInstance();
-        ProductCategoryDao prodDao = ProductCategoryDaoMem.getInstance();
+        ProductDao productDao = new ProductDaoJDBC();
+        SupplierDao supplierDao = new SupplierDaoJDBC();
+        ProductCategoryDao prodDao = new ProductCategoryDaoJDBC();
         List<Product> product = new ArrayList<>();
         if(!supplierToSort.equals("choose_supplier") && categoryToSort.equals("choose_category")){
             product = productDao.getBy(supplierDao.getByName(supplierToSort));
