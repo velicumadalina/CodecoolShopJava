@@ -34,7 +34,6 @@ public class ProductController extends HttpServlet {
         ProductDao productDataStore = new ProductDaoJDBC();
         ProductCategoryDao productCategoryDataStore =new ProductCategoryDaoJDBC();
         SupplierDao supplierCategory = new SupplierDaoJDBC();
-        System.out.println(productCategoryDataStore.getAll());
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("category", productCategoryDataStore.getAll());
@@ -67,8 +66,6 @@ public class ProductController extends HttpServlet {
         context.setVariable("productToSort", categoryToSort);
         context.setVariable("supplierToSort", supplierToSort);
         context.setVariable("suppliers", supplierDao.getAll());
-        System.out.println(categoryToSort);
-        System.out.println(product.toString());
         engine.process("product/index.html", context, response.getWriter());
     }
 

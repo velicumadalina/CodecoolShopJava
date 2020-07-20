@@ -76,6 +76,7 @@ public class ProductCategoryDaoJDBC implements ProductCategoryDao {
                         resultSet.getString("department"),
                         resultSet.getString("description"));
                 tempCategory.setId(resultSet.getInt("id"));
+                products.add(tempCategory);
             }
         } catch (SQLException e) {
             e.printStackTrace();

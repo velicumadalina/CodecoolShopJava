@@ -4,7 +4,7 @@ import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.sql.ProductDaoJDBC;
 import com.codecool.shop.model.Cart;
 import com.codecool.shop.model.Product;
 import org.thymeleaf.TemplateEngine;
@@ -33,41 +33,16 @@ public class CartController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        ProductDao productDao = new ProductDaoJDBC();
         String itemToAdd = request.getParameter("add_product");
-        String newQuantity = request.getParameter("quantity");
-        String originalQuantity = request.getParameter("original-qty");
-        String qtyIndex = request.getParameter("index");
         if (itemToAdd != null) {
-            ProductDao productDao = ProductDaoMem.getInstance();
             Product product = productDao.find((Integer.parseInt(itemToAdd)));
             myCart.add(product);
             total += product.getPrice();
-            System.out.println(product);
             response.sendRedirect("/");
-        } else if (Integer.parseInt(newQuantity) != Integer.parseInt(originalQuantity)) {
-            ProductDao productDao = ProductDaoMem.getInstance();
-            Product product = productDao.find(Integer.parseInt(request.getParameter("product_id")));
-            productQuantities.set(Integer.parseInt(qtyIndex), Integer.parseInt(newQuantity));
-            System.out.println(productQuantities + "  index:  " + qtyIndex + "  vechi:  " + originalQuantity + " nou: " + newQuantity);
-            namesAndQuantities = myCart.getNamesAndQuantities();
-            TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
-            WebContext context = new WebContext(request, response, request.getServletContext());
-            if (Integer.parseInt(newQuantity) > Integer.parseInt(originalQuantity)) {
-                for (int i = 0; i < (Integer.parseInt(newQuantity) - Integer.parseInt(originalQuantity)); i++) {
-                    total += product.getPrice();
-                }
-            } else if (Integer.parseInt(newQuantity) < Integer.parseInt(originalQuantity) && (Integer.parseInt(newQuantity) != 0)) {
-                for (int i = 0; i < (Integer.parseInt(originalQuantity) - Integer.parseInt(newQuantity)); i++) {
-                    total -= product.getPrice();
-                }
-            } else if (Integer.parseInt(newQuantity) == 0) {
-                total -= product.getPrice();
-                myCart.remove(product);
-                cart.remove(Integer.parseInt(qtyIndex));
-                productQuantities.remove(Integer.parseInt(qtyIndex));
-                namesAndQuantities = myCart.getNamesAndQuantities();
-            }
-            generateCart(response, engine, context);
+        }
+        if (request.getParameter("quantity") != null) {
+            updateQuantity(request, response);
         }
     }
 
@@ -90,5 +65,39 @@ public class CartController extends HttpServlet {
         namesAndQuantities = myCart.getNamesAndQuantities();
         System.out.println(productQuantities);
         generateCart(response, engine, context);
+    }
+
+    public void updateQuantity(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
+        WebContext context = new WebContext(request, response, request.getServletContext());
+        ProductDao productDao = new ProductDaoJDBC();
+        int newQuantity = Integer.parseInt(request.getParameter("quantity"));
+        int originalQuantity = Integer.parseInt(request.getParameter("original-qty"));
+        int qtyIndex = Integer.parseInt(request.getParameter("index"));
+        if (newQuantity != originalQuantity) {
+            Product product = productDao.find(Integer.parseInt(request.getParameter("product_id")));
+            System.out.println("BEFORE " +productQuantities);
+            productQuantities.set(qtyIndex, newQuantity);
+            System.out.println("AFTER " +productQuantities);
+            namesAndQuantities = myCart.getNamesAndQuantities();
+            if (newQuantity > originalQuantity) {
+                for (int i = 0; i < (newQuantity - originalQuantity); i++) {
+                    myCart.getCartContent().add(product);
+                    total += product.getPrice();
+                }
+            } else if ((newQuantity < originalQuantity) && (newQuantity != 0)) {
+                for (int i = 0; i < (originalQuantity - newQuantity); i++) {
+                    total -= product.getPrice();
+                    myCart.getCartContent().remove(product);
+                }
+            } else if (newQuantity == 0) {
+                total -= product.getPrice();
+                myCart.remove(product);
+                cart.remove(qtyIndex);
+                productQuantities.remove(qtyIndex);
+                namesAndQuantities = myCart.getNamesAndQuantities();
+            }
+            generateCart(response, engine, context);
+        }
     }
 }

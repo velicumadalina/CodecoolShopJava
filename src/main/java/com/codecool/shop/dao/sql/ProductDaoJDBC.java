@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDaoJDBC implements ProductDao {
-    private ProductCategoryDao productCategoryDao;
-    private SupplierDao supplierDao;
+    private ProductCategoryDao productCategoryDao = new ProductCategoryDaoJDBC();
+    private SupplierDao supplierDao = new SupplierDaoJDBC();
 
 
     @Override
@@ -91,6 +91,7 @@ public class ProductDaoJDBC implements ProductDao {
                         productCategoryDao.find(resultSet.getInt("category_id")),
                         supplierDao.find(resultSet.getInt("supplier_id")));
                 tempProduct.setId(resultSet.getInt("id"));
+                products.add(tempProduct);
             }
         } catch (SQLException e) {
             e.printStackTrace();
