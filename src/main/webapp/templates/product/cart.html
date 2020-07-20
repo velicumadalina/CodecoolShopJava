@@ -19,7 +19,12 @@
     <div class="row" th:each="index : ${#numbers.sequence( 0, #arrays.length(cart)-1)}">
         <div class="col col-sm-12 col-md-6 col-lg-4" id="productss">
             <div class="name" th:if="${cart.size() != 0}">
-                <h5 th:text="${cart[index].name}"> Product name</h5>
+                <img class="" style="float:left" width="220px" height="150px" src="http://placehold.it/400x250/000/fff"
+                     th:attr="src='/static/img/product_' + ${cart[index].id} + '.jpg'" alt=""/>
+
+            </div>
+            <div class="description" th:if="${cart.size() != 0}">
+                <h6 th:text="${cart[index].name}"> Product name</h6>
                 <form action="/cart" method="post">
                     <input type="hidden" name="index" th:value="${index}">
                     <input type="hidden" name="original-qty" th:value="${quantities[index]}">
@@ -29,7 +34,8 @@
                 </form>
             </div>
             <div class="price" th:if="${cart.size() != 0}">
-                <h5 th:text="${cart[index].price + cart[index].getDefaultCurrency() }">Product price</h5>
+
+                <h6 th:text="${cart[index].price + cart[index].getDefaultCurrency() }">Product price</h6>
             </div>
         </div>
     </div>
@@ -37,7 +43,9 @@
     <div>
         <p> Total</p>
         <p th:text="${totalPrice}  + ' USD'"> Total</p>
-        <button type="submit" id="checkout" class="btn-huge"><a href="/check-out">Check out</a></button>
+        <button style="float: right;margin-right: 400px " type="submit" id="checkout" class="btn-huge"><a href="/check-out">Check out</a></button>
+        <button style="float:left; margin-left: 400px" class="btn-huge"><a href="/">Continue Shopping</a></button>
+
     </div>
 
 </div>

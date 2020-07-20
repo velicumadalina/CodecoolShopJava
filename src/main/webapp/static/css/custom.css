@@ -1,109 +1,276 @@
 .glyphicon {
-    margin-right:5px;
+    margin-right: 5px;
 }
-.thumbnail
-{
+
+.thumbnail {
     margin-bottom: 20px;
     padding: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
-.thumbnail img
-{
+
+.thumbnail img {
     margin-top: 10px;
 }
-.item.list-group-item
-{
+
+.item.list-group-item {
     float: none;
     width: 100%;
     background-color: #fff;
     margin-bottom: 10px;
 }
-.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-{
+
+.item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
     background: #428bca;
 }
 
-.item.list-group-item .list-group-image
-{
+.item.list-group-item .list-group-image {
     margin-right: 10px;
 }
-.item.list-group-item .thumbnail
-{
+
+.item.list-group-item .thumbnail {
     margin-bottom: 0px;
 }
-.item.list-group-item .caption
-{
+
+.item.list-group-item .caption {
     padding: 9px 9px 0px 9px;
 }
-.item.list-group-item:nth-of-type(odd)
-{
+
+.item.list-group-item:nth-of-type(odd) {
     background: #eeeeee;
 }
 
-.item.list-group-item:before, .item.list-group-item:after
-{
+.item.list-group-item:before, .item.list-group-item:after {
     display: table;
     content: " ";
 }
 
-.item.list-group-item img
-{
+.item.list-group-item img {
     float: left;
 }
-.item.list-group-item:after
-{
+
+.item.list-group-item:after {
     clear: both;
 }
-.list-group-item-text
-{
+
+.list-group-item-text {
     margin: 0 0 11px;
 }
 
 button {
     box-shadow: 0px 10px 14px -7px #3e7327;
-    background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
-    background-color:#77b55a;
-    border-radius:4px;
-    border:1px solid #4b8f29;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:13px;
-    font-weight:bold;
-    padding:6px 12px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #5b8a3c;
-}
-button:hover {
-    background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
-    background-color:#72b352;
-}
-button:active {
-    position:relative;
-    top:1px;
+    background: linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+    background-color: #77b55a;
+    border-radius: 4px;
+    border: 1px solid #4b8f29;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 12px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #5b8a3c;
 }
 
-.prod{
+button:hover {
+    background: linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+    background-color: #72b352;
+}
+
+button:active {
+    position: relative;
+    top: 1px;
+}
+
+/*.container {*/
+/*    background-color: #f2f2f2;*/
+/*    padding: 5px 20px 15px 20px;*/
+/*    border: 1px solid lightgrey;*/
+/*    border-radius: 3px;*/
+
+/*}*/
+
+.pay {
+    font-size: larger;
+    display: block;
+    width: 700px;
+}
+
+.prod {
     height: 550px;
     width: 360px;
     margin: 20px;
     padding: 20px;
 }
 
-.name{
-    width:250px;
-}
-.price{
-    margin-left: 250px;
-    float:right;
+.name {
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 250px;
 }
 
-#productss{
+.description {
+    margin-top: 50px;
+    margin-left: 20px;
+    width: 250px;
+}
+
+.price {
+    margin-top: 70px;
+
+    margin-left: 90px;
+    float: right;
+}
+
+#productss {
     margin-left: 570px;
-    width:700px;
+    width: 700px;
     display: flex;
 }
 
+* {
+    box-sizing: border-box
+}
+
+
+.pay-pal {
+    width: 600px;
+    margin: 0px 0px 200px 200px;
+}
+
+.credit-card {
+    width: 360px;
+    height: 400px;
+    margin: 60px auto 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, .10);
+}
+
+.form-header {
+    height: 60px;
+    padding: 20px 30px 0;
+    border-bottom: 1px solid #e1e8ee;
+}
+
+.form-body {
+    height: 340px;
+    padding: 30px 30px 20px;
+}
+
+.title {
+    font-size: 18px;
+    margin: 0;
+    color: #5e6977;
+}
+
+.card-number,
+.cvv-input input,
+.month select,
+.year select {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 14px;
+}
+
+.card-number,
+.month select,
+.year select {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 14px;
+}
+
+.card-number,
+.cvv-details,
+.cvv-input input,
+.month select,
+.year select {
+    height: 40px;
+    opacity: .7;
+    color: #86939e;
+}
+
+.card-number {
+    width: 100%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    border: 2px solid #e1e8ee;
+    border-radius: 6px;
+}
+
+.month select,
+.year select {
+    width: 145px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    border: 2px solid #e1e8ee;
+    border-radius: 6px;
+    background-position: 85% 50%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+.month select {
+    float: left;
+}
+
+.year select {
+    float: right;
+}
+
+.cvv-input input {
+    float: left;
+    width: 145px;
+    padding-left: 20px;
+    border: 2px solid #e1e8ee;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.cvv-details {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.cvv-details p {
+    margin-top: 6px;
+}
+
+.paypal-btn,
+.proceed-btn {
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    border-color: transparent;
+    border-radius: 6px;
+}
+
+.proceed-btn {
+    margin-bottom: 10px;
+    background: #7dc855;
+}
+
+.paypal-btn a,
+.proceed-btn a {
+    text-decoration: none;
+}
+
+.proceed-btn a {
+    color: #fff;
+}
+
+.paypal-btn a {
+    color: rgba(242, 242, 242, .7);
+}
+
+.paypal-btn {
+    padding-right: 95px;
+}

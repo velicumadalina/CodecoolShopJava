@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head  th:replace="header.html :: copy">
+<head th:replace="header.html :: copy">
     <title>Payment</title>
     <script src="static/js/payment.js" defer></script>
 </head>
@@ -12,23 +12,61 @@
     <h1>Payment</h1>
 
     <h4>Payment method</h4>
-    <div class="card">
-        <input type="checkbox" name="paypal" id="paypal">
-        <label for="paypal"> Paypal</label><br>
-    </div>
-    <div class="card">
-        <input type="checkbox" name="credit_card" id="credit_card">
-        <label for="credit_card"> Credit card</label><br>
+    <form class="credit-card" action="/payment" method="post">
+        <div class="form-header">
+            <h4 class="title">Credit card detail</h4>
+        </div>
+
+        <div class="form-body">
+            <input type="text" class="card-number" placeholder="Card Number">
+
+            <div class="date-field">
+                <div class="month">
+                    <select name="Month">
+                        <option value="january">January</option>
+                        <option value="february">February</option>
+                        <option value="march">March</option>
+                        <option value="april">April</option>
+                        <option value="may">May</option>
+                        <option value="june">June</option>
+                        <option value="july">July</option>
+                        <option value="august">August</option>
+                        <option value="september">September</option>
+                        <option value="october">October</option>
+                        <option value="november">November</option>
+                        <option value="december">December</option>
+                    </select>
+                </div>
+                <div class="year">
+                    <select name="Year">
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="card-verification">
+                <div class="cvv-input">
+                    <input type="text" placeholder="CVV">
+                </div>
+                <div class="cvv-details">
+                    <p>3 or 4 digits usually found <br> on the signature strip</p>
+                </div>
+            </div>
+            <button type="submit" class="proceed-btn">Proceed</button>
+            <button type="submit" class="paypal-btn"><a href="/paypal">Pay With PayPal <i class="fa fa-paypal"
+                                                                                          aria-hidden="true"></i></a>
+            </button>
+        </div>
+    </form>
+    <div>
     </div>
 </div>
 
-    <div>
-        <form action="/payment" method="POST">
-            <button type="submit">Continue</button>
-        </form>
-    </div>
 
-
-    <div th:replace="footer.html :: copy"></div>
+<div th:replace="footer.html :: copy"></div>
 </body>
 </html>
