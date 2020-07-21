@@ -100,7 +100,7 @@ button:active {
 }
 
 .prod {
-    height: 550px;
+    height: 500px;
     width: 360px;
     margin: 20px;
     padding: 20px;
@@ -274,7 +274,136 @@ button:active {
     padding-right: 95px;
 }
 
+body {
+    font-family:'Comfortaa';
+    font-style: normal;
+    line-height: 1.5;
+}
+
+.cid-rbaMy1tJOl .mbr-shop .mbr-gallery-item {
+    left: 0 !important;
+    top: 0 !important;
+    vertical-align: top;
+    position: relative !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    padding: 10px;
+}
+
+.mbr-gallery .mbr-gallery-item {
+    position: relative;
+    display: inline-block;
+    width: 25%;
+    cursor: pointer;
+}
+
+html,body {
+    height:100%;
+}
+body{
+    margin:0;
+    padding:0;
+    background:#FFF;
+    -webkit-font-smoothing: antialiased;
+}
+a:hover{text-decoration: none;}
+
+#slider {
+    overflow: hidden;
+}
+#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 20s slider infinite;
+}
+#slider figure img {
+    width: 20%;
+    float: left;
+    height: 600px;
+}
+
+@keyframes slider {
+    0% {
+        left: 0;
+    }
+    20% {
+        left: 0;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    75% {
+        left: -300%;
+    }
+    95% {
+        left: -300%;
+    }
+    100% {
+        left: -400%;
+    }
+}
+
+.h1, h1 {
+    font-size: 2.5rem;
+    position: absolute;
+    z-index: 10;
+    color: white;
+    padding-top: 50px;
+}
+.btn-info, .btn-info:active, .btn-info.active {
+    background-color: #ffa0a4 !important;
+    border-color: #ffa0a4 !important;
+    color: #ffffff !important;
+    border-radius: 10px;
+}
+
+.mbr-section-btn a.btn:not(.btn-form) {
+    border-radius: 100px;
+    transition-property: background-color, color, border-color, box-shadow;
+    transition-duration: .3s,.3s,.3s,.8s;
+    transition-timing-function: ease-in-out;
+}
+
+.btn-info {
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-sm {
+    border: 1px solid;
+    font-weight: 500;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    padding: 0.8rem 1.5rem;
+    border-radius: 3px;
+}
 
 
+.cart-btn{
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    margin-left: 1700px;
+    margin-top: 15px;
+    border-radius: 50px;
+}
 
 
+.price-index{
+    font-size: medium;
+}

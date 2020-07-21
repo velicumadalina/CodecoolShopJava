@@ -42,17 +42,13 @@ public class CartController extends HttpServlet {
         if (itemToAdd != null) {
             ProductDao productDao = new ProductDaoJDBC();
             Product product = productDao.find((Integer.parseInt(itemToAdd)));
-            System.out.println(itemToAdd);
-            System.out.println(product);
             myCart.add(product);
             total += product.getPrice();
-            System.out.println(product);
             response.sendRedirect("/");
         } else if (Integer.parseInt(newQuantity) != Integer.parseInt(originalQuantity)) {
             ProductDao productDao = new ProductDaoJDBC();
             Product product = productDao.find(Integer.parseInt(request.getParameter("product_id")));
             productQuantities.set(Integer.parseInt(qtyIndex), Integer.parseInt(newQuantity));
-            System.out.println(productQuantities + "  index:  " + qtyIndex + "  vechi:  " + originalQuantity + " nou: " + newQuantity);
             namesAndQuantities = myCart.getNamesAndQuantities();
             TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
             WebContext context = new WebContext(request, response, request.getServletContext());
@@ -65,6 +61,7 @@ public class CartController extends HttpServlet {
                 for (int i = 0; i < (Integer.parseInt(originalQuantity) - Integer.parseInt(newQuantity)); i++) {
                     total -= product.getPrice();
                     myCart.getCartContent().remove(product);
+                    System.out.println("AAAAAAAA " +myCart.getCartContent());
                 }
             } else if (Integer.parseInt(newQuantity) == 0) {
                 total -= product.getPrice();
@@ -92,16 +89,8 @@ public class CartController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
         cart = myCart.getDistinctProductsJDBC();
-        System.out.println(cart);
         productQuantities = myCart.getFrequencies();
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" +productQuantities);
-        System.out.println("Cartul intreg este: " + myCart.getCartContent() + "\n" + " cartul fara repetitii este " + cart + "\n"+ " si frecventele sunt " + productQuantities);
         namesAndQuantities = myCart.getNamesAndQuantities();
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        System.out.println(cart);
-        System.out.println(productQuantities);
-        System.out.println(namesAndQuantities);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
         generateCart(response, engine, context);
     }
 }
