@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html :: copy">
+    <script src="static/js/carousel.js" defer></script>
+    <title>Codecool Shop</title>
+</head>
+
+<body>
+<div id="slider">
+    <!--    <div class="jumbotron text-center">-->
+    <h1>Codecool Shop</h1>
+    <a class="btn btn-sm btn-info display-4 cart-btn" href="/cart"> <i class="fa fa-shopping-cart fa-2x"
+                                                                       style="color: #eeeeee"></i>
+    </a>
+    <!--    </div>-->
+    <figure>
+        <img src="static/img/header_9.jpg">
+        <img src="static/img/header_2.jpg">
+        <img src="static/img/header_10.jpg">
+        <img src="static/img/header_6.jpg">
+    </figure>
+</div>
+<div id="body-wrapper">
+
+    <section>
+        <div style="padding: 200px" class="card detailed-view">
+            <div class="row">
+                <img class="" style="float: left;padding:250px" width="600px" height="485px" src="http://placehold.it/400x250/000/fff"
+                     th:attr="src='/static/img/product_' + ${product.id} + '.jpg'" alt=""/>
+<!--                <img width="600px" height="485px" src="http://placehold.it/400x250/000/fff" style="float: left;padding:250px"-->
+<!--                     th:attr="src='static/img/product_' + ${product.id} + '.jpg'" alt=""/>-->
+                <div class="col col-twothird">
+                    <h2 th:text="${product.getName()}">Product Name</h2>
+                    <p class="small grayed" th:text="${product.getProductCategory().getName()}">Category<span class="separator">|</span><p class="small grayed" th:text="${product.getSupplier().getName()}">Supplier
+                    </p>
+
+                    <h6 th:text="${product.getDescription()}">Description</h6>
+                    <p><b>Price: </b>&nbsp;<a th:text="${product.getPrice() + ' '+ product.getDefaultCurrency()}">Tim Miller</a></p>
+                    <form style="float: right" action="/cart" method="post">
+                        <input type="hidden" name="add_product" th:value="${product.id}">
+                        <button style="float: left; background: black; height: 55px;color:white" type="submit">Add to Cart<i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        Copyright, bla-bla
+    </footer>
+</div>
+<div class="background">
+    <div class="dark-blue-layer"></div>
+    <div class="light-blue-layer"></div>
+</div>
+</body>
+
+</html>
