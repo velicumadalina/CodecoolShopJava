@@ -26,7 +26,7 @@ public class CartController extends HttpServlet {
     CartDao cartDao = CartDaoMem.getInstance();
     private Cart myCart = cartDao.find(1);
     private float total = 0;
-    List<Product> cart = myCart.getDistinctProducts();
+    List<Product> cart = myCart.getDistinctProductsJDBC();
     List<Integer> productQuantities = myCart.getFrequencies();
     List<String> namesAndQuantities = myCart.getNamesAndQuantities();
 
@@ -63,7 +63,9 @@ public class CartController extends HttpServlet {
         cart = myCart.getCartContent().stream().distinct().collect(Collectors.toList());
         productQuantities = myCart.getFrequencies();
         namesAndQuantities = myCart.getNamesAndQuantities();
-        System.out.println(productQuantities);
+        System.out.println("CONTINUTUL CARTULUI " + myCart.getCartContent());
+        System.out.println("CANTITATI " + productQuantities);
+        System.out.println("NUME SI CANTITATI " + namesAndQuantities);
         generateCart(response, engine, context);
     }
 
@@ -76,9 +78,7 @@ public class CartController extends HttpServlet {
         int qtyIndex = Integer.parseInt(request.getParameter("index"));
         if (newQuantity != originalQuantity) {
             Product product = productDao.find(Integer.parseInt(request.getParameter("product_id")));
-            System.out.println("BEFORE " +productQuantities);
             productQuantities.set(qtyIndex, newQuantity);
-            System.out.println("AFTER " +productQuantities);
             namesAndQuantities = myCart.getNamesAndQuantities();
             if (newQuantity > originalQuantity) {
                 for (int i = 0; i < (newQuantity - originalQuantity); i++) {

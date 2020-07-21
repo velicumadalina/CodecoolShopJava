@@ -117,6 +117,7 @@ public class ProductDaoJDBC implements ProductDao {
                         productCategoryDao.find(resultSet.getInt("category_id")),
                         supplierDao.find(resultSet.getInt("supplier_id")));
                 tempProduct.setId(resultSet.getInt("id"));
+                products.add(tempProduct);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -142,6 +143,7 @@ public class ProductDaoJDBC implements ProductDao {
                         productCategoryDao.find(resultSet.getInt("category_id")),
                         supplierDao.find(resultSet.getInt("supplier_id")));
                 tempProduct.setId(resultSet.getInt("id"));
+                products.add(tempProduct);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -168,6 +170,7 @@ public class ProductDaoJDBC implements ProductDao {
                         productCategoryDao.find(resultSet.getInt("category_id")),
                         supplierDao.find(resultSet.getInt("supplier_id")));
                 tempProduct.setId(resultSet.getInt("id"));
+                products.add(tempProduct);
             }
         } catch (SQLException e) {
             e.printStackTrace();

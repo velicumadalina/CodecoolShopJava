@@ -18,6 +18,7 @@ public class Cart extends BaseModel{
         this.cartContent.remove(product);
     }
 
+
     public List<Product> getCartContent() {
         return cartContent;
     }
