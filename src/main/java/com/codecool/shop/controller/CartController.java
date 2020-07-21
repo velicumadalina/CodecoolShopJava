@@ -59,10 +59,12 @@ public class CartController extends HttpServlet {
             if (Integer.parseInt(newQuantity) > Integer.parseInt(originalQuantity)) {
                 for (int i = 0; i < (Integer.parseInt(newQuantity) - Integer.parseInt(originalQuantity)); i++) {
                     total += product.getPrice();
+                    myCart.getCartContent().add(product);
                 }
             } else if (Integer.parseInt(newQuantity) < Integer.parseInt(originalQuantity) && (Integer.parseInt(newQuantity) != 0)) {
                 for (int i = 0; i < (Integer.parseInt(originalQuantity) - Integer.parseInt(newQuantity)); i++) {
                     total -= product.getPrice();
+                    myCart.getCartContent().remove(product);
                 }
             } else if (Integer.parseInt(newQuantity) == 0) {
                 total -= product.getPrice();
