@@ -32,8 +32,11 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductDao productDataStore = new ProductDaoJDBC();
-        ProductCategoryDao productCategoryDataStore =new ProductCategoryDaoJDBC();
+        ProductCategoryDao productCategoryDataStore = new ProductCategoryDaoJDBC();
         SupplierDao supplierCategory = new SupplierDaoJDBC();
+        System.out.println("Din controller" + productCategoryDataStore.getAll());
+        System.out.println(productDataStore.getAll());
+        System.out.println(supplierCategory.getAll());
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("category", productCategoryDataStore.getAll());
@@ -55,11 +58,9 @@ public class ProductController extends HttpServlet {
         }
         if(!categoryToSort.equals("choose_category") && supplierToSort.equals("choose_supplier")) {
             product = productDao.getBy(prodDao.getByName(categoryToSort));
-            System.out.println(product);
         }
         if(!supplierToSort.equals("choose_supplier") && !categoryToSort.equals("choose_category")){
             product = productDao.filterBy(categoryToSort, supplierToSort);
-            System.out.println(product);
         }
         WebContext context = new WebContext(request, response, request.getServletContext());
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
@@ -69,6 +70,8 @@ public class ProductController extends HttpServlet {
         context.setVariable("productToSort", categoryToSort);
         context.setVariable("supplierToSort", supplierToSort);
         context.setVariable("suppliers", supplierDao.getAll());
+        System.out.println(categoryToSort);
+        System.out.println(product.toString());
         engine.process("product/index.html", context, response.getWriter());
     }
 

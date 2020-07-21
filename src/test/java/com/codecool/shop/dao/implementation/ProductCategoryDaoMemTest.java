@@ -26,12 +26,12 @@ class ProductCategoryDaoMemTest {
         productCategoryDao.add(productCat);
     }
 //
-//    @Test
-//    @Order(1)
-//    void testGetByIdReturnsCorrectValue() {
-//        System.out.println("1");
-//        assertEquals(productCat, productCategoryDao.find(productCat.getId()));
-//    }
+    @Test
+    @Order(1)
+    void testGetByIdReturnsCorrectValue() {
+        System.out.println("1");
+        assertEquals(3, productCategoryDao.find(3).getId());
+    }
 
 
 //    @Test

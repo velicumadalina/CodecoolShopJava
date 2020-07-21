@@ -190,7 +190,6 @@ button:active {
 .cvv-input input,
 .month select,
 .year select {
-    height: 40px;
     opacity: .7;
     color: #86939e;
 }
@@ -274,3 +273,9 @@ button:active {
 .paypal-btn {
     padding-right: 95px;
 }
+
+
+
+
+
+

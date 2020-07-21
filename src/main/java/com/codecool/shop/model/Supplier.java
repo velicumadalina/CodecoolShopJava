@@ -5,9 +5,18 @@ import java.util.List;
 
 public class Supplier extends BaseModel {
     private List<Product> products;
+    private static int counter= 1;
 
     public Supplier(String name, String description) {
         super(name);
+        this.setId(counter);
+        counter++;
+        this.description = description;
+        this.products = new ArrayList<>();
+    }
+    public Supplier(int id,String name, String description) {
+        super(name);
+        this.id = id;
         this.description = description;
         this.products = new ArrayList<>();
     }

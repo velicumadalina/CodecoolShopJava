@@ -3,7 +3,6 @@ package com.codecool.shop.dao.sql;
 import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.model.Supplier;
 
-import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +36,9 @@ public class SupplierDaoJDBC implements SupplierDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 tempSupplier = new Supplier(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"));
-                tempSupplier.setId(resultSet.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,9 +49,10 @@ public class SupplierDaoJDBC implements SupplierDao {
     @Override
     public void remove(int id) {
         String query = "DELETE FROM suppliers WHERE id = ?";
-        try (Connection connection = dbConnection.getConnection();) {
+        try (Connection connection = dbConnection.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, id);
+            statement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -68,9 +68,9 @@ public class SupplierDaoJDBC implements SupplierDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 tempSupplier = new Supplier(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"));
-                tempSupplier.setId(resultSet.getInt("id"));
                 suppliers.add(tempSupplier);
             }
         } catch (SQLException e) {
@@ -89,9 +89,9 @@ public class SupplierDaoJDBC implements SupplierDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 tempSupplier = new Supplier(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"));
-                tempSupplier.setId(resultSet.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

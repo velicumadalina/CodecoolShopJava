@@ -40,10 +40,10 @@ public class ProductCategoryDaoJDBC implements ProductCategoryDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 tempCategory = new ProductCategory(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("department"),
                         resultSet.getString("description"));
-                tempCategory.setId(resultSet.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,6 +57,7 @@ public class ProductCategoryDaoJDBC implements ProductCategoryDao {
         try (Connection connection = dbConnection.getConnection();) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, id);
+            statement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -72,10 +73,10 @@ public class ProductCategoryDaoJDBC implements ProductCategoryDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 tempCategory = new ProductCategory(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("department"),
                         resultSet.getString("description"));
-                tempCategory.setId(resultSet.getInt("id"));
                 products.add(tempCategory);
             }
         } catch (SQLException e) {
@@ -94,10 +95,10 @@ public class ProductCategoryDaoJDBC implements ProductCategoryDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 tempCategory = new ProductCategory(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("department"),
                         resultSet.getString("description"));
-                tempCategory.setId(resultSet.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
