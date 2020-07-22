@@ -44,8 +44,6 @@
 </div>
 
 
-
-
 <div class="container">
     <div class="card">
         <form action="/" method="POST">
@@ -64,7 +62,16 @@
             <button type="submit">Filter <i class="fa fa-filter" aria-hidden="true"></i></button>
         </form>
     </div>
+    <script>
+        let button = document.getElementById("bttn");
 
+        function handleForm(event) {
+            event.preventDefault();
+        }
+
+        button.addEventListener('click', handleForm);
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    </script>
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
@@ -75,18 +82,20 @@
 
                     <form id="product_form" action="/details" method=post>
                         <input type="hidden" name="product" th:value="${prod.id}">
-                        <button style=" padding: 10px;border: none; background:none; margin-left:70px; color: black" type="submit">
+                        <button style=" padding: 10px;border: none; background:none; margin-left:70px; color: black"
+                                type="submit">
                             Product details
                         </button>
                     </form>
                     <form style="float: right" action="/cart" method="post">
                         <input type="hidden" name="add_product" th:value="${prod.id}">
-                        <button style="border: none; background:none" type="submit"><i class="fa fa-cart-plus fa-3x"
-                                                                                       style="color: black"
-                                                                                       aria-hidden="true"></i>
+                        <button id="bttn" style="border: none; background:none" type="submit"><i
+                                class="fa fa-cart-plus fa-3x"
+                                style="color: black"
+                                aria-hidden="true"></i>
                         </button>
                     </form>
-                    <h3 onclick="submitForm()" class="card-title" th:text="${prod.name}"> Product name</h3>
+                    <h3 class="card-title" th:text="${prod.name}"> Product name</h3>
 
                     <h6 class="lead price-index" th:text="${prod.getPrice() + ' '+ prod.getDefaultCurrency()}">100
                         USD</h6>

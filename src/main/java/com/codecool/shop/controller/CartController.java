@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -26,11 +24,14 @@ import java.util.stream.Collectors;
 public class CartController extends HttpServlet {
     CartDao cartDao = CartDaoMem.getInstance();
     private Cart myCart = cartDao.find(1);
+    List<Product> cartContents = myCart.getCartContent();
     private float total = 0;
-    List<Product> cart = myCart.getDistinctProducts();
-    List<Integer> productQuantities = myCart.getFrequencies();
-    List<String> namesAndQuantities = myCart.getNamesAndQuantities();
-
+    List<Product> cart;
+    //    = myCart.getCartContent().stream().distinct().collect(Collectors.toList());
+    List<Integer> productQuantities;
+    //    = getFrequencies(cart, myCart.getCartContent());
+    List<String> namesAndQuantities;
+//    = getNamesAndQuantities(cart, productQuantities);
 
 
     @Override
@@ -42,33 +43,39 @@ public class CartController extends HttpServlet {
         if (itemToAdd != null) {
             ProductDao productDao = new ProductDaoJDBC();
             Product product = productDao.find((Integer.parseInt(itemToAdd)));
-            myCart.add(product);
+            cartContents.add(product);
             total += product.getPrice();
             response.sendRedirect("/");
         } else if (Integer.parseInt(newQuantity) != Integer.parseInt(originalQuantity)) {
             ProductDao productDao = new ProductDaoJDBC();
             Product product = productDao.find(Integer.parseInt(request.getParameter("product_id")));
             productQuantities.set(Integer.parseInt(qtyIndex), Integer.parseInt(newQuantity));
-            namesAndQuantities = myCart.getNamesAndQuantities();
+            namesAndQuantities = getNamesAndQuantities(cart, productQuantities);
             TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
             WebContext context = new WebContext(request, response, request.getServletContext());
             if (Integer.parseInt(newQuantity) > Integer.parseInt(originalQuantity)) {
                 for (int i = 0; i < (Integer.parseInt(newQuantity) - Integer.parseInt(originalQuantity)); i++) {
                     total += product.getPrice();
-                    myCart.getCartContent().add(product);
+                    cartContents.add(product);
+                    cart = getDistinctProductsJDBC();
+                    productQuantities = getFrequencies(cart, cartContents);
+                    namesAndQuantities = getNamesAndQuantities(cart, productQuantities);
                 }
             } else if (Integer.parseInt(newQuantity) < Integer.parseInt(originalQuantity) && (Integer.parseInt(newQuantity) != 0)) {
                 for (int i = 0; i < (Integer.parseInt(originalQuantity) - Integer.parseInt(newQuantity)); i++) {
                     total -= product.getPrice();
-                    myCart.getCartContent().remove(product);
-                    System.out.println("AAAAAAAA " +myCart.getCartContent());
+                    removeFirstOccurenceByName(product, cartContents);
+                    cart = getDistinctProductsJDBC();
+                    productQuantities = getFrequencies(cart, cartContents);
+                    System.out.println("AAAAAAAA " + cartContents);
+                    namesAndQuantities = getNamesAndQuantities(cart, productQuantities);
                 }
             } else if (Integer.parseInt(newQuantity) == 0) {
                 total -= product.getPrice();
-                myCart.remove(product);
-                cart.remove(Integer.parseInt(qtyIndex));
-                productQuantities.remove(Integer.parseInt(qtyIndex));
-                namesAndQuantities = myCart.getNamesAndQuantities();
+                removeByName(product, cartContents);
+                cart = getDistinctProductsJDBC();
+                productQuantities = getFrequencies(cart, cartContents);
+                namesAndQuantities = getNamesAndQuantities(cart, productQuantities);
             }
             generateCart(response, engine, context);
         }
@@ -76,9 +83,11 @@ public class CartController extends HttpServlet {
 
     private void generateCart(HttpServletResponse response, TemplateEngine engine, WebContext context) throws IOException {
         context.setVariable("cart", cart);
+        System.out.println("CART " + cart);
         context.setVariable("totalPrice", total);
         context.setVariable("quantities", productQuantities);
-        context.setVariable("totalItems", myCart.totalItems(productQuantities));
+        System.out.println("QUANTITIES" + productQuantities);
+        context.setVariable("totalItems", cartContents.size());
         context.setVariable("namesAndQuantities", namesAndQuantities);
         engine.process("product/cart.html", context, response.getWriter());
     }
@@ -88,9 +97,53 @@ public class CartController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
-        cart = myCart.getDistinctProductsJDBC();
-        productQuantities = myCart.getFrequencies();
-        namesAndQuantities = myCart.getNamesAndQuantities();
+        cart = getDistinctProductsJDBC();
+        productQuantities = getFrequencies(cart, cartContents);
+        namesAndQuantities = getNamesAndQuantities(cart, productQuantities);
         generateCart(response, engine, context);
+    }
+
+    public List<Integer> getFrequencies(List<Product> distinct, List<Product> allProducts) {
+        List<Integer> freqs = new ArrayList<>();
+        for (Product elem : distinct) {
+            freqs.add(getProductFrequency(elem, allProducts));
+        }
+        return freqs;
+    }
+
+    public int getProductFrequency(Product product, List<Product> cartContent) {
+        int frequency = 0;
+        for (Product elem : cartContent) {
+            if (elem.getName().equals(product.getName())) {
+                frequency++;
+            }
+        }
+        return frequency;
+    }
+
+    public List<String> getNamesAndQuantities(List<Product> distinct, List<Integer> quantities) {
+        List<String> namesAndQuantities = new ArrayList<>();
+        for (int i = 0; i < distinct.size(); i++) {
+            namesAndQuantities.add(distinct.get(i).getName() + " - " + quantities.get(i) + " item(s)");
+        }
+        return namesAndQuantities;
+    }
+
+    public List<Product> getDistinctProductsJDBC() {
+        Set<String> set = new HashSet<>(cartContents.size());
+        return cartContents.stream().filter(p -> set.add(p.getName())).collect(Collectors.toList());
+    }
+
+    public void removeByName(Product product, List<Product> productList) {
+        productList.removeIf(prod -> prod.getName().equals(product.getName()));
+    }
+
+    public void removeFirstOccurenceByName(Product product, List<Product> productList) {
+        for(Product prod: productList){
+            if(prod.getName().equals(product.getName())){
+                productList.remove(prod);
+                break;
+            }
+        }
     }
 }
