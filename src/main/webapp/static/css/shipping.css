@@ -1,0 +1,242 @@
+
+
+@import url("https://fonts.googleapis.com/css?family=Arimo");
+body {
+    display: flex;
+    /*justify-content: center;*/
+    background-color: #ffebe9;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    position: absolute;
+    margin-top: 22%;
+    margin-left:350px;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Comfortaa';
+    background-color: white;
+    -webkit-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+    -moz-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+    box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+    animation: slideUp 2000ms ease;
+
+}
+
+@keyframes slideUp {
+    0% {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        visibility: visible;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+.container {
+    width: 65%;
+    padding: 5% 10%;
+}
+
+h1 {
+    align-self: center;
+}
+
+form {
+    width: 100%;
+}
+form > * {
+    margin-top: 20px;
+}
+form input {
+    width: 100%;
+    min-height: 25px;
+    border: 1px lightgrey solid;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    font-family: 'Comfortaa';
+    margin-top: 5px;
+    color: black;
+    border-radius: 4px;
+}
+form label {
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: black;
+}
+form h1 {
+    font-size: 28px;
+    line-height: 10px;
+    color: black;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+form h1:nth-of-type(2) {
+    margin-top: 10%;
+}
+
+.name {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+}
+.name div {
+    width: 45%;
+}
+
+.address-info {
+    display: flex;
+    justify-content: space-between;
+}
+.address-info div {
+    width: 30%;
+}
+
+.cc-info {
+    display: flex;
+    justify-content: space-between;
+}
+.cc-info div {
+    width: 45%;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.btns button {
+    margin: 3px 0;
+    height: 40px;
+    width: 40%;
+    color: white;
+    background-color: #3C3C3C;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 0.3rem;
+    letter-spacing: 2px;
+}
+.btns button:hover {
+    animation-name: btn-hov;
+    animation-duration: 550ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes btn-hov {
+    100% {
+        background-color: #cfc9e1;
+        color: papayawhip;
+        transform: scale(1.05);
+    }
+}
+input:focus,
+button:focus {
+    outline: none;
+}
+
+@media (max-width: 736px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    .container {
+        width: 100%;
+        border: 1px solid lightgrey;
+    }
+
+    .btns {
+        align-items: center;
+    }
+    .btns button {
+        width: 50%;
+    }
+
+    form h1 {
+        text-align: center;
+    }
+
+    .name,
+    .address-info,
+    .cc-info {
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .name div,
+    .address-info div,
+    .cc-info div {
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        display: flex;
+        padding:15px;
+    }
+
+    .street,
+    .cc-num {
+        text-align: center;
+    }
+
+    input {
+        margin: 5px 0;
+        min-height: 30px;
+    }
+}
+
+
+.header-login-signup .header-limiter ul {
+    font: 14px Arial, Helvetica, sans-serif;
+    list-style: none;
+    line-height: 1;
+    float: right;
+}
+
+.header-login-signup .header-limiter nav {
+    font: 16px Arial, Helvetica, sans-serif;
+    line-height: 40px;
+    float: left;
+    margin: 0 0 0 60px;
+    padding: 0;
+}
+
+.header-login-signup .header-limiter h1 {
+    float: left;
+    font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+    line-height: 40px;
+    margin: 0;
+}
+
+.header-login-signup .header-limiter {
+    max-width: 1400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.header-login-signup {
+    height: 80px;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 10;
+    padding-top: 40px;
+}
+
+.header-login-signup .header-limiter ul {
+    font: 14px Arial, Helvetica, sans-serif;
+    list-style: none;
+    line-height: 1;
+    float: right;
+    margin-left: 569px;
+}
+
+.header-login-signup .header-limiter ul li {
+    display: inline-block;
+    margin-left: 15px;
+    opacity: 0.9;
+}
+
+
+

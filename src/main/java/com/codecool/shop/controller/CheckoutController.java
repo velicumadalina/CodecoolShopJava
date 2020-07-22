@@ -29,7 +29,7 @@ public class CheckoutController extends HttpServlet {
         context.setVariable("namesAndQuantities", namesAndQuantities);
         context.setVariable("total", total);
         currentCart.clearCart();
-        engine.process("product/check_out.html", context, response.getWriter());
+        engine.process("product/shipping_and_payment.html", context, response.getWriter());
     }
 
 
@@ -39,7 +39,7 @@ public class CheckoutController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
-        engine.process("product/check_out.html", context, response.getWriter());
+        engine.process("product/shipping_and_payment.html", context, response.getWriter());
     }
 
 

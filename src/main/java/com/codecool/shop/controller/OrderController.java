@@ -47,9 +47,7 @@ public class OrderController extends HttpServlet {
         context.setVariable("productsDetails", productsDetails);
         Order order = new Order(1, total, name, email, phone, address, productsDetails);
         orderDao.add(order);
-        System.out.println("ORDERRRR" +order );
-//        String orderInfo = orderDao.find(1).getOrderInfo();
-        engine.process("product/payment.html", context, response.getWriter());
+        response.sendRedirect("/order-confirmation");
     }
 
 

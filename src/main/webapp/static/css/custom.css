@@ -275,6 +275,7 @@
 }
 
 body {
+    background-color: #ffebe9;
     font-family: 'Comfortaa';
     font-style: normal;
     line-height: 1.5;
@@ -568,9 +569,9 @@ tbody {
     margin-left: 626px;
 }
 
-table{
+table {
     margin-left: 50px;
-    width:500px;
+    width: 500px;
 }
 
 tr {
@@ -585,29 +586,44 @@ td, th {
     font-size: medium;
 }
 
-.page-content{
+.page-content {
     display: flex;
     background-color: white;
 }
 
-.quantity{
-    width:100px;
+.quantity {
+    width: 100px;
 }
 
-.discount{
+.discount {
     width: 500px;
     margin-left: 50px;
 }
 
-.cart-contents{
-    margin-left:50px;
+.cart-contents {
+    margin-left: 50px;
+    border-right: solid 1px lightgray;
+    padding: 40px;
 }
 
-.cart-totals{
-    padding-top: 100px;
+.cart-totals {
+    padding-top: 125px;
     float: right;
     background-color: white;
     padding-right: 110px;
+    border: 1px solid lightgrey;
 }
 
+button:hover {
+    animation-name: btn-hov;
+    animation-duration: 550ms;
+    animation-fill-mode: forwards;
+}
 
+@keyframes btn-hov {
+    100% {
+        background-color: #cfc9e1;
+        color: papayawhip;
+        transform: scale(1.05);
+    }
+}
