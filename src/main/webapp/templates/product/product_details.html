@@ -7,12 +7,29 @@
 
 <body>
 <div id="slider">
-    <!--    <div class="jumbotron text-center">-->
-    <h1>Codecool Shop</h1>
-    <a class="btn btn-sm btn-info display-4 cart-btn" href="/cart"> <i class="fa fa-shopping-cart fa-2x"
-                                                                       style="color: #eeeeee"></i>
-    </a>
-    <!--    </div>-->
+    <header class="header-login-signup" id="myHeader">
+
+        <div class="header-limiter">
+
+            <h1><a href="#">Codecool <span> Shop</span></a></h1>
+
+            <nav>
+                <a href="#">Shop</a>
+                <a href="#" class="selected">Blog</a>
+                <a href="#">Pricing</a>
+            </nav>
+
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign up</a></li>
+                <li><a class="btn btn-sm btn-info display-4 " href="/cart"> <i class="fa fa-shopping-cart fa-2x"
+                                                                               style="color: #eeeeee"></i></a></li>
+            </ul>
+
+
+        </div>
+
+    </header>
     <figure>
         <img src="static/img/header_9.jpg">
         <img src="static/img/header_2.jpg">
@@ -23,27 +40,55 @@
 <div id="body-wrapper">
 
     <section>
-        <div style="padding: 200px" class="card detailed-view">
+
+        <div style="padding:0px 300px" class="card detailed-view">
+            <div>
+                <h1 class="prod-title-detailed" th:text="${product.getName()}">Product Name</h1>
+            </div>
             <div class="row">
-                <img class="" style="float: left;padding:250px" width="600px" height="485px" src="http://placehold.it/400x250/000/fff"
+                <img class="" style="float: left" width="600px" height="485px"
+                     src="http://placehold.it/400x250/000/fff"
                      th:attr="src='/static/img/product_' + ${product.id} + '.jpg'" alt=""/>
-<!--                <img width="600px" height="485px" src="http://placehold.it/400x250/000/fff" style="float: left;padding:250px"-->
-<!--                     th:attr="src='static/img/product_' + ${product.id} + '.jpg'" alt=""/>-->
-                <div class="col col-twothird">
+                <!--                <img width="600px" height="485px" src="http://placehold.it/400x250/000/fff" style="float: left;padding:250px"-->
+                <!--                     th:attr="src='static/img/product_' + ${product.id} + '.jpg'" alt=""/>-->
+                <div class="col col-twothird" style="    padding-top: 87px;
+    padding-left: 50px;
+    width: 35%;">
                     <h2 th:text="${product.getName()}">Product Name</h2>
-                    <p class="small grayed" th:text="${product.getProductCategory().getName()}">Category<span class="separator">|</span><p class="small grayed" th:text="${product.getSupplier().getName()}">Supplier
+                    <p class="small grayed" th:text="${product.getProductCategory().getName()}">Category<span
+                            class="separator">|</span>
+                    <p class="small grayed" th:text="${product.getSupplier().getName()}">Supplier
                     </p>
 
                     <h6 th:text="${product.getDescription()}">Description</h6>
-                    <p><b>Price: </b>&nbsp;<a th:text="${product.getPrice() + ' '+ product.getDefaultCurrency()}">Tim Miller</a></p>
+                    <p><b>Price: </b>&nbsp;<a th:text="${product.getPrice() + ' '+ product.getDefaultCurrency()}">Tim
+                        Miller</a></p>
                     <form style="float: right" action="/cart" method="post">
                         <input type="hidden" name="add_product" th:value="${product.id}">
-                        <button style="float: left; background: black; height: 55px;color:white" type="submit">Add to Cart<i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
+                        <button style="margin-right: 713px; float: left; background: black; height: 55px;color:white" type="submit">
+                                <i class="fa fa-cart-plus fa-2x" aria-hidden="true">    </i>
                         </button>
                     </form>
                 </div>
             </div>
+            <div class="woocommerce-tabs wc-tabs-wrapper">
+                <ul class="tabs wc-tabs" role="tablist">
+                    <li class="local_1_tab active" id="tab-title-local_1" role="tab" aria-controls="tab-local_1"><a
+                            href="#tab-local_1">
+                        Ingredients </a></li>
+                </ul>
+                <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--local_1 panel entry-content wc-tab"
+                     id="tab-local_1" role="tabpanel" aria-labelledby="tab-title-local_1" style="display: block;"><p>
+                    Ingredients: Sodium Palmate * (RSPO Sustainable Palm Oil), Sodium Palm Kernelate * (RSPO Sustainable
+                    Palm Kernal Oil), Aqua (Water), Glycerin, Parfum (a blend made only from essential oils including
+                    orange, grapefruit, may chang, spearmint, lemon and lavender), Limonene, Sodium Citrate (Sodium salt
+                    derived from Citric Acid), Sodium Chloride (Salt), Citral, Tetrasodium Gluatamate Diacetate, Citric
+                    Acid, Linalool.</p>
+                    <p>* Made with 100% RSPO certified segregated sustainable Palm Oil and Palm Kernal Oil.</p>
+                    <p>99.94% Natural</p></div>
+            </div>
         </div>
+
     </section>
     <footer>
         Copyright, bla-bla

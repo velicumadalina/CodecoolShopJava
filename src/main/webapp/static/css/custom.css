@@ -100,9 +100,9 @@
 }
 
 .prod {
-    height: 500px;
+    height: 470px;
     width: 360px;
-    margin: 20px;
+    /*margin: 20px;*/
     padding: 20px;
 }
 
@@ -126,8 +126,8 @@
 }
 
 #productss {
-    margin-left: 570px;
-    width: 700px;
+    margin-left: 180px;
+    width: 850px;
     display: flex;
 }
 
@@ -275,7 +275,7 @@
 }
 
 body {
-    font-family:'Comfortaa';
+    font-family: 'Comfortaa';
     font-style: normal;
     line-height: 1.5;
 }
@@ -297,20 +297,25 @@ body {
     cursor: pointer;
 }
 
-html,body {
-    height:100%;
+html, body {
+    height: 100%;
 }
-body{
-    margin:0;
-    padding:0;
-    background:#FFF;
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #FFF;
     -webkit-font-smoothing: antialiased;
 }
-a:hover{text-decoration: none;}
+
+a:hover {
+    text-decoration: none;
+}
 
 #slider {
     overflow: hidden;
 }
+
 #slider figure {
     position: relative;
     width: 500%;
@@ -318,6 +323,7 @@ a:hover{text-decoration: none;}
     left: 0;
     animation: 20s slider infinite;
 }
+
 #slider figure img {
     width: 20%;
     float: left;
@@ -361,6 +367,7 @@ a:hover{text-decoration: none;}
     color: white;
     padding-top: 50px;
 }
+
 .btn-info, .btn-info:active, .btn-info.active {
     background-color: #ffa0a4 !important;
     border-color: #ffa0a4 !important;
@@ -371,7 +378,7 @@ a:hover{text-decoration: none;}
 .mbr-section-btn a.btn:not(.btn-form) {
     border-radius: 100px;
     transition-property: background-color, color, border-color, box-shadow;
-    transition-duration: .3s,.3s,.3s,.8s;
+    transition-duration: .3s, .3s, .3s, .8s;
     transition-timing-function: ease-in-out;
 }
 
@@ -394,7 +401,7 @@ a:hover{text-decoration: none;}
 }
 
 
-.cart-btn{
+.cart-btn {
     cursor: pointer;
     position: absolute;
     z-index: 10;
@@ -404,10 +411,203 @@ a:hover{text-decoration: none;}
 }
 
 
-.price-index{
+.price-index {
     font-size: medium;
 }
 
 .detailed-view .poster {
     max-width: 200px;
 }
+
+
+.header-login-signup .header-limiter ul {
+    font: 14px Arial, Helvetica, sans-serif;
+    list-style: none;
+    line-height: 1;
+    float: right;
+}
+
+.header-login-signup .header-limiter nav {
+    font: 16px Arial, Helvetica, sans-serif;
+    line-height: 40px;
+    float: left;
+    margin: 0 0 0 60px;
+    padding: 0;
+}
+
+.header-login-signup .header-limiter h1 {
+    float: left;
+    font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+    line-height: 40px;
+    margin: 0;
+}
+
+.header-login-signup .header-limiter {
+    max-width: 1400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.header-login-signup {
+    height: 80px;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 10;
+    padding-top: 40px;
+}
+
+.header-login-signup .header-limiter ul {
+    font: 14px Arial, Helvetica, sans-serif;
+    list-style: none;
+    line-height: 1;
+    float: right;
+    margin-left: 569px;
+}
+
+.header-login-signup .header-limiter ul li {
+    display: inline-block;
+    margin-left: 15px;
+    opacity: 0.9;
+}
+
+.prod-title {
+    margin: 100px 100px 100px 800px;
+    align-content: center;
+    font-size: 65px;
+}
+
+.prod-title-detailed {
+    margin: 100px 100px 100px 300px;
+    align-content: center;
+    font-size: 65px;
+}
+
+.woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs {
+    clear: both;
+}
+
+.woocommerce-tabs {
+    border: 1px solid #5b5459;
+    margin: 40px 0;
+    padding: 30px;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+    list-style: none;
+    padding: 0 0 0 1em;
+    margin: 0 0 1.618em;
+    overflow: hidden;
+    position: relative;
+}
+
+.woocommerce-tabs .panel {
+    margin: 0 2em 2em 20% !important;
+    text-align: left;
+    padding: 0 0 0 2em !important;
+    font-weight: 100;
+}
+
+.woocommerce-tabs ul.tabs {
+    width: 20%;
+    float: left;
+}
+
+.woocommerce-tabs ul, ul li {
+    font-family: museo-sans;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position /
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/ Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 102px;
+}
+
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals {
+    float: right;
+    width: 48%;
+}
+
+.gfieldset_style h2, .gfieldset_style h2.woocommerce-loop-category__title {
+    display: inline-block;
+    width: auto;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    background-color: #fff;
+    padding: 0 20px;
+    font-size: 2.5em;
+}
+
+#add_payment_method .cart-collaterals .cart_totals table, .woocommerce-cart .cart-collaterals .cart_totals table, .woocommerce-checkout .cart-collaterals .cart_totals table {
+    border-collapse: separate;
+    margin: 0 0 6px;
+    padding: 0;
+}
+
+.woocommerce table.shop_table {
+    border: 1px solid rgba(0, 0, 0, .1);
+    margin: 0 -1px 24px 0;
+    text-align: left;
+    width: 100%;
+    border-collapse: separate;
+    border-radius: 5px;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    width: 700px;
+    margin-left: 626px;
+}
+
+table{
+    margin-left: 50px;
+    width:500px;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+}
+
+td, th {
+    padding: 25px;
+    margin-right: 40px;
+    margin-left: 40px;
+    font-size: medium;
+}
+
+.page-content{
+    display: flex;
+    background-color: white;
+}
+
+.quantity{
+    width:100px;
+}
+
+.discount{
+    width: 500px;
+    margin-left: 50px;
+}
+
+.cart-contents{
+    margin-left:50px;
+}
+
+.cart-totals{
+    padding-top: 100px;
+    float: right;
+    background-color: white;
+    padding-right: 110px;
+}
+
+

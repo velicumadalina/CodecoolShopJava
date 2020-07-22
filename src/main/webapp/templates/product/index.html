@@ -8,20 +8,39 @@
 
 
 <body>
-
 <div id="slider">
-    <!--    <div class="jumbotron text-center">-->
-    <h1 class="head">Codecool Shop</h1>
-    <a class="btn btn-sm btn-info display-4 cart-btn" href="/cart"> <i class="fa fa-shopping-cart fa-2x"
-                                                                       style="color: #eeeeee"></i>
-    </a>
-    <!--    </div>-->
+    <header class="header-login-signup">
+
+        <div class="header-limiter">
+
+            <h1><a href="#">Codecool <span> Shop</span></a></h1>
+
+            <nav>
+                <a href="#">Shop</a>
+                <a href="#" class="selected">Blog</a>
+                <a href="#">Pricing</a>
+            </nav>
+
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign up</a></li>
+                <li><a class="btn btn-sm btn-info display-4 " href="/cart"> <i class="fa fa-shopping-cart fa-2x"
+                                                                               style="color: #eeeeee"></i></a></li>
+            </ul>
+
+
+        </div>
+
+    </header>
     <figure>
         <img src="static/img/header_9.jpg">
         <img src="static/img/header_2.jpg">
         <img src="static/img/header_10.jpg">
         <img src="static/img/header_6.jpg">
     </figure>
+</div>
+<div>
+    <h1 class="prod-title">Products</h1>
 </div>
 
 
@@ -49,22 +68,26 @@
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="prod mbr-gallery-item">
                 <img class="" width="320px" height="250px" src="http://placehold.it/400x250/000/fff"
-                     th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/><hr>
+                     th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
 
-                    <form id="product_form" action="/details" method = post>
+                    <form id="product_form" action="/details" method=post>
                         <input type="hidden" name="product" th:value="${prod.id}">
-                        <button style="border: none; background:none; margin-left:70px; color: black" type="submit">Product details</button>
+                        <button style=" padding: 10px;border: none; background:none; margin-left:70px; color: black" type="submit">
+                            Product details
+                        </button>
                     </form>
-                    <hr>
                     <form style="float: right" action="/cart" method="post">
                         <input type="hidden" name="add_product" th:value="${prod.id}">
-                        <button style="border: none; background:none" type="submit"><i class="fa fa-cart-plus fa-3x"style="color: black" aria-hidden="true"></i>
+                        <button style="border: none; background:none" type="submit"><i class="fa fa-cart-plus fa-3x"
+                                                                                       style="color: black"
+                                                                                       aria-hidden="true"></i>
                         </button>
                     </form>
                     <h3 onclick="submitForm()" class="card-title" th:text="${prod.name}"> Product name</h3>
 
-                    <h6 class="lead price-index" th:text="${prod.getPrice() + ' '+ prod.getDefaultCurrency()}">100 USD</h6>
+                    <h6 class="lead price-index" th:text="${prod.getPrice() + ' '+ prod.getDefaultCurrency()}">100
+                        USD</h6>
                 </div>
             </div>
         </div>
