@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Codecool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- End of Bootstrap components -->
+    <!--        <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/shipping.css"/>
+    <title>Shipping Details</title>
+
+</head>
+<body>
+<div id="slider">
+    <header class="header-login-signup">
+
+        <div class="header-limiter">
+
+            <h1><a href="/">Codecool <span> Shop</span></a></h1>
+
+            <nav>
+                <a href="#">Shop</a>
+                <a href="#" class="selected">Blog</a>
+                <a href="#">Pricing</a>
+            </nav>
+
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign up</a></li>
+                <li><a class="btn btn-sm btn-info display-4 " href="/cart"> <i class="fa fa-shopping-cart fa-2x"
+                                                                               style="color: #eeeeee"></i></a></li>
+            </ul>
+
+
+        </div>
+
+    </header>
+    <img src="static/img/header_2x.jpg" width="1835px" height="400px">
+</div>
+<div class="wrapper">
+    <div class="container">
+        <form action="/order" method="POST">
+            <h1>
+                <i class="fa fa-address-card-o">
+                    Shipping Details</i>
+            </h1>
+            <div class="name">
+                <div>
+                    <label for="fname">First</label>
+                    <input type="text" name="fname">
+                </div>
+                <div>
+                    <label for="l-name">Last</label>
+                    <input type="text" name="lname">
+                </div>
+            </div>
+            <div class="street">
+                <label for="email">E-mail:</label>
+                <input type="text" name="email">
+            </div>
+
+            <div style="width:240px;">
+                <label for="phone">Phone number</label>
+                <input type="text" name="phone">
+            </div>
+
+            <div class="street">
+                <label for="address">Address</label>
+                <input type="text" name="address">
+            </div>
+            <div class="address-info">
+                <div>
+                    <label for="city">City</label>
+                    <input type="text" name="city">
+                </div>
+                <div>
+                    <label for="state">State</label>
+                    <input type="text" name="state">
+                </div>
+                <div>
+                    <label for="zip">Zip</label>
+                    <input type="text" name="zip">
+                </div>
+            </div>
+            <h1>
+                <i class="fa fa-credit-card"></i> Payment Information
+            </h1>
+            <div class="cc-num">
+                <label for="card-num">Credit Card No.</label>
+                <input type="text" name="card-num">
+            </div>
+            <div class="cc-info">
+                <div>
+                    <label for="card-num">Exp</label>
+                    <input type="text" name="expire">
+                </div>
+                <div>
+                    <label for="card-num">CCV</label>
+                    <input type="text" name="security">
+                </div>
+            </div>
+            <div class="btns">
+                <br>
+                <button class="proceed-btn" type="submit">Purchase</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<!--<div th:replace="footer.html :: copy"></div>-->
+
+</html>
