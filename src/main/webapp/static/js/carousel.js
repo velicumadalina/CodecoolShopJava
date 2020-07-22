@@ -14,3 +14,9 @@ $(window).resize(function()
 {
     $('.hero').css('height', ($(window).height() - $('header').outerHeight()) + 'px'); // Refresh hero height
 });
+
+function submitForm() {
+    document.getElementById('form')[0].submit()
+    console.log("AAAAAAAAAAAAAAAAA")
+}
+

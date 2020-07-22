@@ -11,7 +11,7 @@
 
 <div id="slider">
     <!--    <div class="jumbotron text-center">-->
-    <h1>Codecool Shop</h1>
+    <h1 class="head">Codecool Shop</h1>
     <a class="btn btn-sm btn-info display-4 cart-btn" href="/cart"> <i class="fa fa-shopping-cart fa-2x"
                                                                        style="color: #eeeeee"></i>
     </a>
@@ -51,15 +51,21 @@
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="prod mbr-gallery-item">
                 <img class="" width="320px" height="250px" src="http://placehold.it/400x250/000/fff"
-                     th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
+                     th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/><hr>
                 <div class="card-header">
-                    <h3 class="card-title" th:text="${prod.name}">Product name</h3>
+
+                    <form id="product_form" action="/details" method = post>
+                        <input type="hidden" name="product" th:value="${prod.id}">
+                        <button style="border: none; background:none; margin-left:70px; color: black" type="submit">Product details</button>
+                    </form>
+                    <hr>
                     <form style="float: right" action="/cart" method="post">
                         <input type="hidden" name="add_product" th:value="${prod.id}">
-                        <button type="submit"><i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
+                        <button style="border: none; background:none" type="submit"><i class="fa fa-cart-plus fa-3x"style="color: black" aria-hidden="true"></i>
                         </button>
                     </form>
-                    <p class="card-text" th:text="${prod.description}">Product description... </p>
+                    <h3 onclick="submitForm()" class="card-title" th:text="${prod.name}"> Product name</h3>
+
                     <h6 class="lead price-index" th:text="${prod.getPrice() + ' '+ prod.getDefaultCurrency()}">100 USD</h6>
                 </div>
             </div>
