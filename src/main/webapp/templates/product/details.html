@@ -8,13 +8,14 @@
 <body>
 
 <div class="jumbotron text-center">
-        <form class="credit-card">
-            <br><br>
-            <h4> Order details</h4>
-            <div th:each="detail : ${orderDetails}">
-                <h6 th:text="${detail}"> detail</h6>
-            </div>
-        </form>
+    <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125"
+         height="120" style="display: block; border: 0px;"/><br>
+    <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
+        Thank You For Your Order! </h2>
+    <h4> Order details</h4>
+    <div th:each="detail : ${orderDetails}">
+        <h6 th:text="${detail}"> detail</h6>
+    </div>
 </div>
 
 <div th:replace="footer.html :: copy"></div>

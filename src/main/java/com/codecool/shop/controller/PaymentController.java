@@ -29,7 +29,7 @@ public class PaymentController extends HttpServlet {
         List<String> orderDetails = Arrays.asList(order.split("\\n"));
         EmailSender.sendMail(currentOrder.getEmail(), "webshopemail123@gmail.com", order, currentOrder);
         context.setVariable("orderDetails", orderDetails);
-        engine.process("product/details.html", context, response.getWriter());
+        engine.process("product/confirmation.html", context, response.getWriter());
     }
 
 
