@@ -13,24 +13,22 @@
 
         <div class="header-limiter">
 
-            <h1><a href="/">Codecool <span> Shop</span></a></h1>
+            <h1><a href="/" style="color: #212529">Codecool <span style="color: #212529"> Shop</span></a></h1>
 
             <nav>
-                <a href="#">Shop</a>
-                <a href="#" class="selected">Blog</a>
-                <a href="#">Pricing</a>
+                <a href="#" style="color: #212529">Shop</a>
+                <a href="#" class="selected" style="color: #212529">Blog</a>
+                <a href="#" style="color: #212529">Pricing</a>
             </nav>
 
             <ul>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign up</a></li>
+                <li><a href="#" style="color: #212529">Login</a></li>
+                <li><a href="#" style="color: #212529">Sign up</a></li>
                 <li><a class="btn btn-sm btn-info display-4 " href="/cart"> <i class="fa fa-shopping-cart fa-2x"
                                                                                style="color: #eeeeee"></i></a></li>
             </ul>
 
-
         </div>
-
     </header>
     <figure>
         <img src="static/img/header_1.jpg">
@@ -39,29 +37,65 @@
         <img src="static/img/header_9.jpg">
     </figure>
 </div>
+
+
 <div>
     <h1 class="prod-title">Products</h1>
 </div>
 
-
-<div class="container">
-    <div class="card">
-        <form action="/" method="POST">
+<div class="filter">
+    <h4>Filter</h4>
+    <form action="/" method="POST">
+        <div class="select">
             <label>
                 <select name="sort_category">
-                    <option value="choose_category">Choose category</option>
+                    <option value="choose_category" style="display: none">Choose category</option>
                     <option th:each="cat,iterStat : ${category}" th:text="${cat.name}">cat</option>
                 </select>
             </label>
+        </div>
+        <div class="select">
             <label>
                 <select name="sort_supplier">
-                    <option value="choose_supplier">Choose supplier</option>
+                    <option value="choose_supplier" style="display: none">Choose supplier</option>
                     <option th:each="supp,iterStat : ${suppliers}" th:text="${supp.name}">cat</option>
                 </select>
             </label>
             <button type="submit">Filter <i class="fa fa-filter" aria-hidden="true"></i></button>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container">-->
+<!--    <div class="card">-->
+<!--        <form action="/" method="POST">-->
+<!--            <label>-->
+<!--                <select name="sort_category">-->
+<!--                    <option value="choose_category">Choose category</option>-->
+<!--                    <option th:each="cat,iterStat : ${category}" th:text="${cat.name}">cat</option>-->
+<!--                </select>-->
+<!--            </label>-->
+<!--            <label>-->
+<!--                <select name="sort_supplier">-->
+<!--                    <option value="choose_supplier">Choose supplier</option>-->
+<!--                    <option th:each="supp,iterStat : ${suppliers}" th:text="${supp.name}">cat</option>-->
+<!--                </select>-->
+<!--            </label>-->
+<!--            <button type="submit">Filter <i class="fa fa-filter" aria-hidden="true"></i></button>-->
+<!--        </form>-->
+<!--    </div>-->
+
+
     <script>
         let button = document.getElementById("bttn");
 
@@ -82,7 +116,7 @@
 
                     <form id="product_form" action="/details" method=post>
                         <input type="hidden" name="product" th:value="${prod.id}">
-                        <button style=" padding: 10px;border: none; background:none; margin-left:70px; color: black"
+                        <button style=" padding: 10px;border: none; background-color: #cc9393; margin-left:70px; margin-bottom: 10px; color: black"
                                 type="submit">
                             Product details
                         </button>
