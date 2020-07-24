@@ -11,7 +11,7 @@
 
         <div class="header-limiter">
 
-            <h1><a href="#"style="color: #212529">Codecool <span style="color: #212529"> Shop</span></a></h1>
+            <h1><a href="#" style="color: #212529">Codecool <span style="color: #212529"> Shop</span></a></h1>
 
             <nav>
                 <a href="#" style="color: #212529">Shop</a>
@@ -27,27 +27,27 @@
             </ul>
         </div>
     </header>
-    <img src="static/img/header_2x.jpg" width="100%" height="400px">
+    <img src="static/img/header_product_details.jpg" width="100%" height="400px">
+    <h1 id="text-details">Homemade Products</h1>
+    <img  id="vegan-logo-details" src="static/img/vegan_logo.png">
 </div>
 
 
-<div id="body-wrapper">
+<div id="body-wrapper" style="padding: 100px; background-color: #fff2fa">
     <section>
-        <div style="padding:0px 300px; background-color: #fff2fa;" class="card detailed-view">
+        <div style="padding:0px 300px;" class="card detailed-view">
             <br><br>
             <div class="row">
                 <img class="" style="float: left" width="600px" height="485px"
                      src="http://placehold.it/400x250/000/fff"
                      th:attr="src='/static/img/product_' + ${product.id} + '.jpg'" alt=""/>
-                <!--                <img width="600px" height="485px" src="http://placehold.it/400x250/000/fff" style="float: left;padding:250px"-->
-                <!--                     th:attr="src='static/img/product_' + ${product.id} + '.jpg'" alt=""/>-->
                 <div class="col col-twothird" style="  padding-top: 87px;
     padding-left: 60px;
     width: 35%;">
                     <h2 th:text="${product.getName()}">Product Name</h2>
-                    <p class="small grayed" th:text="${product.getProductCategory().getName()}">Category<span
+                    <p class="small grayed" th:text="'Category: ' + ${product.getProductCategory().getName()}">Category<span
                             class="separator">|</span>
-                    <p class="small grayed" th:text="${product.getSupplier().getName()}">Supplier
+                    <p class="small grayed" th:text="'Supplier: ' + ${product.getSupplier().getName()}">Supplier
                     </p>
 
                     <h6 th:text="${product.getDescription()}">Description</h6>
@@ -55,7 +55,7 @@
                         Miller</a></p>
                     <form style="float: right" action="/cart" method="post">
                         <input type="hidden" name="add_product" th:value="${product.id}">
-                        <button style="margin-right: 503px; float: left; background: black; height: 40px;width:100px;color:white" type="submit">
+                        <button style="margin-right: 357px; float: left; background: black; height: 40px;width:100px;color:white" type="submit">
                                 <i class="fa fa-cart-plus fa-2x" aria-hidden="true">    </i>
                         </button>
                     </form>
@@ -64,7 +64,7 @@
             <div class="woocommerce-tabs wc-tabs-wrapper">
                 <ul class="tabs wc-tabs" role="tablist">
                     <li class="local_1_tab active" id="tab-title-local_1" role="tab" aria-controls="tab-local_1">
-                        Ingredients</li>
+                        Ingredients :</li>
                 </ul>
                 <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--local_1 panel entry-content wc-tab"
                      id="tab-local_1" role="tabpanel" aria-labelledby="tab-title-local_1" style="display: block;"><p>

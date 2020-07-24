@@ -30,11 +30,14 @@
 
         </div>
     </header>
+    <h1 id="banner-text">Homemade Products</h1>
+    <img  id="vegan-logo" src="static/img/vegan_logo.png">
     <figure>
         <img src="static/img/header_1.jpg">
-        <img src="static/img/header_5.jpg">
+        <img src="static/img/header_2.jpg">
         <img src="static/img/header_3.jpg">
-        <img src="static/img/header_9.jpg">
+        <img src="static/img/header_4.jpg">
+        <img src="static/img/header_3.jpg">
     </figure>
 </div>
 
@@ -44,8 +47,8 @@
 </div>
 
 <div class="filter">
-    <h4>Filter</h4>
     <form action="/" method="POST">
+        <h5>Filter by:</h5>
         <div class="select">
             <label>
                 <select name="sort_category">
@@ -54,6 +57,7 @@
                 </select>
             </label>
         </div>
+        <h5>Sort by:</h5>
         <div class="select">
             <label>
                 <select name="sort_supplier">
@@ -65,35 +69,6 @@
         </div>
     </form>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-<!--<div class="container">-->
-<!--    <div class="card">-->
-<!--        <form action="/" method="POST">-->
-<!--            <label>-->
-<!--                <select name="sort_category">-->
-<!--                    <option value="choose_category">Choose category</option>-->
-<!--                    <option th:each="cat,iterStat : ${category}" th:text="${cat.name}">cat</option>-->
-<!--                </select>-->
-<!--            </label>-->
-<!--            <label>-->
-<!--                <select name="sort_supplier">-->
-<!--                    <option value="choose_supplier">Choose supplier</option>-->
-<!--                    <option th:each="supp,iterStat : ${suppliers}" th:text="${supp.name}">cat</option>-->
-<!--                </select>-->
-<!--            </label>-->
-<!--            <button type="submit">Filter <i class="fa fa-filter" aria-hidden="true"></i></button>-->
-<!--        </form>-->
-<!--    </div>-->
 
 
     <script>

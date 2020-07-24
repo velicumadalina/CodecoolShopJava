@@ -227,5 +227,24 @@ button:focus {
     opacity: 0.9;
 }
 
+#text-details{
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #867e7e;
+    z-index: 10;
+    font-weight: bold;
+    font-size: 60px;
+}
 
+#vegan-logo-details{
+    text-align: center;
+    position: absolute;
+    top: 32%;
+    left: 45%;
+    height: 80px;
+    z-index: 10;
+}
 
