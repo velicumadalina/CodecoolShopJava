@@ -11,17 +11,17 @@
 
         <div class="header-limiter">
 
-            <h1><a href="/">Codecool <span> Shop</span></a></h1>
+            <h1><a href="/" style="color: #212529">Codecool <span style="color: #212529"> Shop</span></a></h1>
 
             <nav>
-                <a href="#">Shop</a>
-                <a href="#" class="selected">Blog</a>
-                <a href="#">Pricing</a>
+                <a href="#" style="color: #212529">Shop</a>
+                <a href="#" class="selected" style="color: #212529">Blog</a>
+                <a href="#" style="color: #212529">Pricing</a>
             </nav>
 
             <ul>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign up</a></li>
+                <li><a href="#" style="color: #212529">Login</a></li>
+                <li><a href="#" style="color: #212529">Sign up</a></li>
                 <li><a class="btn btn-sm btn-info display-4 " href="/cart"> <i class="fa fa-shopping-cart fa-2x"
                                                                                style="color: #eeeeee"></i></a></li>
             </ul>
@@ -32,14 +32,13 @@
     </header>
     <img src="static/img/header_2x.jpg" width="100%" height="400px">
 </div>
+
 <div>
     <div class="jumbotron text-center" style="background-color: #ffebe9">
-
         <div class="page-content">
             <div class="cart-contents">
-                <h2 style="margin-left: 150px; padding: 20px;"><i class="fa fa shopping-cart"></i> Shopping Cart</h2>
+                <h2 style="margin-left: 10px; padding: 20px;"><i class="fa fa shopping-cart"></i> Shopping Cart</h2>
                 <hr>
-
                 <div class="row" th:each="index : ${#numbers.sequence( 0, #arrays.length(cart)-1)}">
                     <div class="col col-sm-12 col-md-6 col-lg-4" id="productss">
                         <div class="name" th:if="${cart.size() != 0}">
@@ -67,7 +66,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cart_totals" style="float: right; padding: 40px; margin-top: 40px;"><h2>Basket totals</h2>
+            <div class="cart_totals" style="float: right; padding: 40px; margin-top: 20px; margin-right: 35px;"><h2>Basket totals</h2>
                 <hr>
                 <div>
                     <table cellspacing="0" class="shop_table shop_table_responsive">

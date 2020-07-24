@@ -27,39 +27,47 @@ public class Initializer implements ServletContextListener {
 //        OrderDao orderDao = OrderDaoMem.getInstance();
 
         //setting up a new supplier
-        Supplier amazon = new Supplier("Amazon", "Digital content and services");
-        supplierDataStore.add(amazon);
-        Supplier lenovo = new Supplier("Lenovo", "Computers");
-        supplierDataStore.add(lenovo);
-        Supplier apple = new Supplier("Apple", "Apple");
-        supplierDataStore.add(apple);
-        Supplier samsung = new Supplier("Samsung", "Samsung");
-        supplierDataStore.add(samsung);
+        Supplier kiniCosmetics = new Supplier("Kini Cosmetics", "Kini Cosmetics");
+        supplierDataStore.add(kiniCosmetics);
+        Supplier lush = new Supplier("Lush", "Lush");
+        supplierDataStore.add(lush);
+        Supplier theSoapShop = new Supplier("The Soap Shop", "The Soap Shop");
+        supplierDataStore.add(theSoapShop);
 
         //setting up a new product category
-        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
-        productCategoryDataStore.add(tablet);
-        ProductCategory phone = new ProductCategory("Phone", "Hardware", "A phone");
-        productCategoryDataStore.add(phone);
-        ProductCategory laptop = new ProductCategory("Laptop", "Hardware", "A laptop");
-        productCategoryDataStore.add(laptop);
+        ProductCategory soap = new ProductCategory("Soap", "Soap", "Soap");
+        productCategoryDataStore.add(soap);
+        ProductCategory candle = new ProductCategory("Candle", "Candle", "Candle");
+        productCategoryDataStore.add(candle);
+        ProductCategory bathBomb = new ProductCategory("Bath Bomb", "Bath Bomb", "Bath Bomb");
+        productCategoryDataStore.add(bathBomb);
 
         //setting up products and printing it
-        productDataStore.add(new Product("Amazon Fire", 49.9f, "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
-        productDataStore.add(new Product("Lenovo IdeaPad Miix 700", 479, "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
-        productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, apple));
-        productDataStore.add(new Product("Samsung Galaxy S20 Ultra, Dual SIM", 50, "USD", "Galaxy S20 features a sleek modern design, next level capture and share and premium performance.", phone, samsung));
-        productDataStore.add(new Product("Apple iPhone 11, 64GB, Black", 150, "USD", "he iPhone 11 is the successor to last year’s iPhone XR model, with a 6.1-inch LCD display.", phone, apple));
-        productDataStore.add(new Product("Samsung Galaxy S10+", 350, "USD", "The Samsung Galaxy S10+ delivers flagship performance, it's slick and fast, happy to run intensive games at the top settings and does so without getting warm. ", phone, samsung));
-        productDataStore.add(new Product("Lenovo ThinkPad X1 Carbon 7th Gen", 250, "USD", "Business convertible for both homes and offices alike.", laptop, lenovo));
-        productDataStore.add(new Product("Lenovo ThinkPad E15", 350, "USD", "A sleek metallic design on top, performance underneath", laptop, lenovo));
-        productDataStore.add(new Product("Apple MacBook Pro 16inch Touch Bar", 450, "USD", "The best for the brightest", laptop, apple));
+        productDataStore.add(new Product("Orange Delight", 5.49f, "USD", "Homemade soap", soap, kiniCosmetics));
+        productDataStore.add(new Product("Calmness", 4.99f, "USD", "Homemade soap", soap, kiniCosmetics));
+        productDataStore.add(new Product("Java Blossom", 3.99f, "USD", "Homemade soap", soap, kiniCosmetics));
+        productDataStore.add(new Product("Honey Moon", 4.99f, "USD", "Homemade soap", soap, kiniCosmetics));
+        productDataStore.add(new Product("Hazelnut Tree", 4.49f, "USD", "Homemade soap", soap, lush));
+        productDataStore.add(new Product("Banana Split", 4.99f, "USD", "Homemade soap", soap, lush));
+        productDataStore.add(new Product("Starry Night", 5.99f, "USD", "Homemade soap", soap, lush));
+        productDataStore.add(new Product("Holy Guacamole", 5.99f, "USD", "Homemade soap", soap, theSoapShop));
+        productDataStore.add(new Product("Unicorn Days", 4.99f, "USD", "Homemade soap", soap, theSoapShop));
+        productDataStore.add(new Product("Queen Bee", 7.49f, "USD", "Homemade soap", soap, theSoapShop));
+        productDataStore.add(new Product("Summer Wine", 7.99f, "USD", "Homemade candle", candle, lush));
+        productDataStore.add(new Product("Petal Harmony", 8.99f, "USD", "Homemade candle", candle, lush));
+        productDataStore.add(new Product("Ruby Rose", 7.99f, "USD", "Homemade candle", candle, theSoapShop));
+        productDataStore.add(new Product("Cinnamon Rolls", 7.99f, "USD", "Homemade candle", candle, theSoapShop));
+        productDataStore.add(new Product("English Rose", 9.49f, "USD", "Homemade candle", candle, theSoapShop));
+        productDataStore.add(new Product("Purple Rain", 8.49f, "USD", "Homemade candle", candle, kiniCosmetics));
+        productDataStore.add(new Product("Cappuccino Dream", 2.49f, "USD", "Homemade bath bomb", bathBomb, theSoapShop));
+        productDataStore.add(new Product("Fluffy Marshmallow", 1.99f, "USD", "Homemade bath bomb", bathBomb, theSoapShop));
+        productDataStore.add(new Product("Fizzy Lemonade", 3.49f, "USD", "Homemade bath bomb", bathBomb, lush));
+        productDataStore.add(new Product("Crazy Watermelon", 2.49f, "USD", "Homemade bath bomb", bathBomb, lush));
+        productDataStore.add(new Product("Pokeball", 2.99f, "USD", "Homemade bath bomb", bathBomb, kiniCosmetics));
 
 
         //setting up the cart
         cartDao.add(new Cart(1));
-
-
 
     }
 }
