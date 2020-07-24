@@ -29,6 +29,7 @@ public class CheckoutController extends HttpServlet {
         context.setVariable("namesAndQuantities", namesAndQuantities);
         context.setVariable("total", total);
         currentCart.clearCart();
+        System.out.println("CONTINUTUL CARTULUIIII" + currentCart);
         engine.process("product/shipping_and_payment.html", context, response.getWriter());
     }
 
@@ -39,6 +40,10 @@ public class CheckoutController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
+        CartDao cartDao = CartDaoMem.getInstance();
+        Cart currentCart = cartDao.find(1);
+        currentCart.clearCart();
+        System.out.println("CONTINUTUL CARTULUIIII" + currentCart);
         engine.process("product/shipping_and_payment.html", context, response.getWriter());
     }
 
