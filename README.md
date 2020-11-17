@@ -1,8 +1,20 @@
 # Codecool Online Shop
 
-Java SE: Web Project skeleton
+A web shop written in Java using Servlets and PostgreSQL.
 
-# Install
+# Main features:
 
-Import this project to IntelliJ as a Maven project.
-IntelliJ can auto-install the dependencies based on the pom.xml
+### Homepage where you can scroll through products and filter them by supplier and category:
+![](images/home.png)
+### Registration
+![](images/register.jpg)
+### Add to cart
+![](images/cart.jpg)
+### Product details
+![](images/product_description.jpg)
+### Checkout form
+![](images/checkout_form.jpg)
+### Order confirmation page
+![](images/after_checkout.jpg)
+
+
